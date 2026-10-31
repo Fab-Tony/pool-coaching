@@ -256,6 +256,97 @@
   .sessions h3 { margin: 0; font-size: 1rem; }
   .sessions p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
 
+
+  /* Explainer */
+  .prose { margin: 0 0 16px; color: var(--text); }
+  h3.sub { font-family: Fraunces, Georgia, serif; font-size: 1.2rem; margin: 28px 0 10px; }
+  .rule-card {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center;
+    background: linear-gradient(160deg, var(--felt-2), var(--felt)); color: var(--felt-ink);
+    border-radius: 14px; padding: 22px 24px; margin: 8px 0 8px;
+  }
+  .rule-card .rule-num { font-family: Fraunces, Georgia, serif; font-size: 3rem; font-weight: 700; line-height: 1; color: var(--gold); }
+  .rule-card h3 { margin: 0 0 4px; font-size: 1rem; color: #fff; }
+  .rule-card p { margin: 0; color: rgba(233, 245, 238, .9); }
+  .rule-card strong { color: #fff; }
+  @media (max-width: 520px) { .rule-card { grid-template-columns: 1fr; gap: 8px; } .rule-card .rule-num { font-size: 2.4rem; } }
+
+  figure { margin: 0; }
+  .chart { border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); padding: 16px 12px 12px; margin: 8px 0 20px; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .chart figcaption, .diagram figcaption { font-size: .82rem; color: var(--faint); text-align: center; margin-top: 6px; }
+  .chart .band { fill: var(--accent-soft); }
+  .chart .grid line { stroke: var(--line); stroke-width: 1; }
+  .chart .grid .thirty { stroke: var(--gold); stroke-dasharray: 5 4; stroke-width: 1.5; }
+  .chart .axis line { stroke: var(--faint); stroke-width: 1.5; }
+  .chart text { font-family: Inter, sans-serif; fill: var(--muted); font-size: 12px; }
+  .chart .ticks text { text-anchor: end; }
+  .chart .xticks text, .chart .axis-title, .chart .band-label, .chart .pt-labels text { text-anchor: middle; }
+  .chart .strong { fill: var(--text); font-weight: 700; }
+  .chart .axis-title, .chart .y-title { font-weight: 600; fill: var(--text); font-size: 12px; }
+  .chart .y-title { text-anchor: middle; }
+  .chart .band-label { fill: var(--accent); font-weight: 600; }
+  .chart .curve { fill: none; stroke: var(--text); stroke-width: 3; stroke-linejoin: round; }
+  .chart .pts circle { fill: var(--gold); stroke: var(--surface-2); stroke-width: 2; }
+  .chart .pt-labels text { fill: var(--text); font-weight: 700; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 8px; }
+  table.data { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 480px; }
+  table.data th { text-align: left; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  table.data td { padding: 9px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  table.data td:last-child { color: var(--muted); font-style: italic; }
+  table.data tr.hl td { background: var(--accent-soft); font-weight: 600; }
+
+  .two-lines { align-items: stretch; }
+  .diagram { border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); padding: 12px; display: grid; place-items: center; }
+  .diagram svg { width: 100%; max-width: 320px; height: auto; }
+  .diagram .aim { stroke: var(--faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .diagram .ob-path { stroke: var(--gold); stroke-width: 2.5; stroke-dasharray: 6 4; }
+  .diagram .tangent { stroke: #3d7bd9; stroke-width: 2.5; }
+  .diagram .roll { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .diagram .ghost { fill: none; stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .diagram .obj { fill: var(--gold); }
+  .diagram .cue { fill: #fff; stroke: var(--text); stroke-width: 1.5; }
+  .diagram .lbl { font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; fill: var(--text); }
+  .diagram .lbl.muted { fill: var(--faint); font-weight: 500; }
+  .diagram .obc { fill: var(--gold); text-anchor: end; }
+  .diagram .tc { fill: #3d7bd9; }
+  .diagram .rc { fill: var(--accent); }
+
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: st; display: grid; gap: 10px; }
+  ol.steps li {
+    counter-increment: st; position: relative; padding: 12px 14px 12px 52px;
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; margin: 0; color: var(--muted);
+  }
+  ol.steps li::before {
+    content: counter(st); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700; font-size: .85rem; display: grid; place-items: center;
+  }
+  ol.steps b { color: var(--text); }
+
+  /* Roadmap */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .chip { display: inline-block; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .chip.covered { background: var(--accent); color: #fff; }
+  .chip.touched { background: var(--gold-soft); color: var(--gold); }
+  .chip.ahead { background: var(--surface-2); color: var(--faint); border: 1px solid var(--line); }
+  ol.roadmap { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  ol.roadmap li {
+    display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: center;
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); margin: 0;
+  }
+  ol.roadmap li.covered { border-color: var(--accent); }
+  ol.roadmap .rn {
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .9rem;
+    background: var(--surface); border: 1px solid var(--line); color: var(--muted);
+  }
+  ol.roadmap li.covered .rn { background: var(--accent); color: #fff; border-color: var(--accent); }
+  ol.roadmap li.touched .rn { background: var(--gold-soft); color: var(--gold); border-color: transparent; }
+  ol.roadmap h3 { margin: 0; font-size: .98rem; }
+  ol.roadmap p { margin: 2px 0 0; color: var(--muted); font-size: .88rem; }
+  ol.roadmap a { color: var(--accent); }
+  @media (max-width: 520px) { ol.roadmap li { grid-template-columns: 30px minmax(0, 1fr); } ol.roadmap li > .chip { grid-column: 2; justify-self: start; } }
+
   footer { text-align: center; color: var(--faint); font-size: .85rem; padding: 0 16px 48px; }
 </style>
 </head>
@@ -283,8 +374,10 @@
       <li><a href="#break">The break</a></li>
       <li><a href="#action">Cue ball action</a></li>
       <li><a href="#angles">Reading angles</a></li>
+      <li><a href="#natural">The 30&deg; rule</a></li>
       <li><a href="#planning">Table planning</a></li>
       <li><a href="#drills">Practice drills</a></li>
+      <li><a href="#roadmap">Coaching roadmap</a></li>
       <li><a href="#sessions">Session log</a></li>
     </ol>
     <div class="session-tag">Updated after each session</div>
@@ -304,7 +397,7 @@
       <div class="takeaways">
         <div class="takeaway"><div class="k">01</div><h3>Routine, every shot</h3><p>The pre-shot routine is not optional, even on easy balls.</p></div>
         <div class="takeaway"><div class="k">02</div><h3>Follow first</h3><p>If follow gets me there, play follow. It is the most repeatable action.</p></div>
-        <div class="takeaway"><div class="k">03</div><h3>Thickness, then line</h3><p>Read the cut before deciding pace or path.</p></div>
+        <div class="takeaway"><div class="k">03</div><h3>The 30&deg; rule</h3><p>Rolling, between a quarter and three-quarter ball, the cue ball leaves at about 30&deg;.</p></div>
         <div class="takeaway"><div class="k">04</div><h3>Accurate break</h3><p>On a 7-foot table, a square hit beats raw power.</p></div>
         <div class="takeaway"><div class="k">05</div><h3>Breathe and trust</h3><p>Check the breath. If the line feels wrong, stand up and reset.</p></div>
       </div>
@@ -387,22 +480,22 @@
       <div class="angles">
         <div class="angle">
           <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="60" cy="30" r="22"/></svg>
-          <b>Full ball</b><span>0&deg; - straight</span>
+          <b>Full ball</b><span>Cut 0&deg; &middot; follow 0&deg;</span>
         </div>
         <div class="angle">
           <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="49" cy="30" r="22"/></svg>
-          <b>Three-quarter</b><span>about 15&deg;</span>
+          <b>Three-quarter</b><span>Cut 15&deg; &middot; follow ~28&deg;</span>
         </div>
         <div class="angle">
           <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="38" cy="30" r="22"/></svg>
-          <b>Half ball</b><span>30&deg;</span>
+          <b>Half ball</b><span>Cut 30&deg; &middot; follow ~34&deg;</span>
         </div>
         <div class="angle">
           <svg viewBox="0 0 120 60"><circle class="ob" cx="70" cy="30" r="22"/><circle class="cb" cx="37" cy="30" r="22"/></svg>
-          <b>Quarter ball</b><span>about 49&deg;</span>
+          <b>Quarter ball</b><span>Cut 49&deg; &middot; follow ~27&deg;</span>
         </div>
       </div>
-      <p class="note">Gold is the object ball; the dashed ring is where the cue ball looks to overlap it when you aim.</p>
+      <p class="note">Gold is the object ball; the dashed ring is where the cue ball overlaps it when you aim. &ldquo;Cut&rdquo; is where the object ball goes; &ldquo;follow&rdquo; is where a rolling cue ball goes - see <a href="#natural">the 30&deg; rule</a>.</p>
       <div class="principles">
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Use the tangent line</h3><p>A stun shot sends the cue ball off at 90&deg; to the object ball's path. A rolling ball follows the natural angle forward from there.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Near-straight shots need more pace</h3><p>A 5&deg; cut is almost straight, so the cue ball barely moves. Cheat the pocket slightly or hit firmer than feels natural.</p></div></div>
@@ -410,6 +503,123 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Know, do not guess</h3><p>Learn what the rails and side actually do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</p></div></div>
       </div>
       <blockquote class="quote">When you know exactly what's going to happen, that's when you start winning frames consistently.<cite>From the 30 Oct session</cite></blockquote>
+    </section>
+
+    <section class="block" id="natural">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="17" r="3"/><path d="M12 14V3"/><path d="M11 14.5L4 6"/></svg></div>
+        <div>
+          <div class="num">Explainer</div>
+          <h2>The natural angle - the 30&deg; rule</h2>
+          <p>Why follow is so predictable, and how to know where the cue ball goes before you hit it.</p>
+        </div>
+      </div>
+
+      <p class="prose">Joe calls it the <strong>natural angle</strong> or the <strong>natural line</strong> - &ldquo;follow where you predict the cue ball is going.&rdquo; Its textbook name is the <strong>30&deg; rule</strong>. Its partner for stun shots is the <strong>90&deg; rule</strong>, or the tangent line.</p>
+
+      <div class="rule-card">
+        <div class="rule-num">30&deg;</div>
+        <div>
+          <h3>The rule</h3>
+          <p>When the cue ball is <strong>rolling</strong> at contact and you hit anywhere between a <strong>quarter ball and a three-quarter ball</strong>, the cue ball leaves the object ball at roughly <strong>30&deg; from the line you aimed along</strong> - somewhere between about 27&deg; and 34&deg;.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">One rule covers most shots</h3>
+      <p class="prose">Most cuts in a match fall between a quarter and three-quarter ball. Across that whole range the cue ball's angle barely changes, so a small error in thickness still sends the cue ball almost exactly where you planned. That is the &ldquo;wide margin of error&rdquo;, and it is the real reason follow is the first choice.</p>
+
+      <figure class="chart">
+        <svg viewBox="0 0 500 290" role="img" aria-label="Cue ball deflection angle for a rolling cue ball against ball-hit fraction: it stays near 30 degrees between a quarter and three-quarter ball, peaking at about 34 degrees near a half-ball hit.">
+          <rect class="band" x="160" y="20" width="200" height="200"/>
+          <g class="grid">
+            <line x1="60" y1="170" x2="460" y2="170"/><line x1="60" y1="120" x2="460" y2="120"/><line x1="60" y1="20" x2="460" y2="20"/>
+            <line class="thirty" x1="60" y1="70" x2="460" y2="70"/>
+          </g>
+          <g class="axis">
+            <line x1="60" y1="220" x2="460" y2="220"/><line x1="60" y1="20" x2="60" y2="220"/>
+          </g>
+          <g class="ticks">
+            <text x="50" y="224">0&deg;</text><text x="50" y="174">10&deg;</text><text x="50" y="124">20&deg;</text><text x="50" y="74" class="strong">30&deg;</text><text x="50" y="24">40&deg;</text>
+          </g>
+          <g class="xticks">
+            <text x="60" y="242">thin</text><text x="160" y="242">&frac14;</text><text x="260" y="242" class="strong">&frac12;</text><text x="360" y="242">&frac34;</text><text x="460" y="242">full</text>
+          </g>
+          <text class="axis-title" x="260" y="270">Ball-hit fraction</text>
+          <text class="band-label" x="260" y="196">wide margin of error</text>
+          <path class="curve" d="M60.0 220.0 L64.0 191.1 L68.0 179.2 L72.0 170.1 L76.0 162.5 L80.0 155.9 L84.0 149.9 L88.0 144.4 L92.0 139.3 L96.0 134.6 L100.0 130.2 L104.0 126.0 L108.0 122.0 L112.0 118.3 L116.0 114.7 L120.0 111.3 L124.0 108.0 L128.0 104.8 L132.0 101.8 L136.0 98.9 L140.0 96.1 L144.0 93.4 L148.0 90.9 L152.0 88.4 L156.0 86.0 L160.0 83.7 L164.0 81.4 L168.0 79.3 L172.0 77.3 L176.0 75.3 L180.0 73.4 L184.0 71.6 L188.0 69.8 L192.0 68.2 L196.0 66.6 L200.0 65.1 L204.0 63.6 L208.0 62.3 L212.0 61.0 L216.0 59.8 L220.0 58.6 L224.0 57.6 L228.0 56.6 L232.0 55.7 L236.0 54.8 L240.0 54.1 L244.0 53.4 L248.0 52.9 L252.0 52.4 L256.0 52.0 L260.0 51.6 L264.0 51.4 L268.0 51.3 L272.0 51.3 L276.0 51.3 L280.0 51.5 L284.0 51.8 L288.0 52.1 L292.0 52.6 L296.0 53.2 L300.0 53.9 L304.0 54.8 L308.0 55.8 L312.0 56.9 L316.0 58.1 L320.0 59.5 L324.0 61.0 L328.0 62.6 L332.0 64.5 L336.0 66.4 L340.0 68.6 L344.0 70.9 L348.0 73.3 L352.0 76.0 L356.0 78.8 L360.0 81.9 L364.0 85.1 L368.0 88.5 L372.0 92.1 L376.0 95.9 L380.0 100.0 L384.0 104.2 L388.0 108.7 L392.0 113.3 L396.0 118.2 L400.0 123.3 L404.0 128.6 L408.0 134.1 L412.0 139.8 L416.0 145.7 L420.0 151.8 L424.0 158.1 L428.0 164.5 L432.0 171.1 L436.0 177.8 L440.0 184.6 L444.0 191.6 L448.0 198.6 L452.0 205.7 L456.0 212.8 L460.0 220.0"/>
+          <g class="pts">
+            <circle cx="160" cy="83.7" r="5"/><circle cx="260" cy="51.6" r="5"/><circle cx="360" cy="81.9" r="5"/>
+          </g>
+          <g class="pt-labels">
+            <text x="160" y="72">27&deg;</text><text x="260" y="40">34&deg;</text><text x="360" y="70">28&deg;</text>
+          </g>
+          <text class="y-title" transform="translate(16 120) rotate(-90)">Cue ball angle off the aim line</text>
+        </svg>
+        <figcaption>Rolling cue ball. The curve is the standard physics result, and it matches what Joe calls on the table.</figcaption>
+      </figure>
+
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Ball-hit fraction</th><th>Cut angle (object ball)</th><th>Cue ball with follow</th><th>Joe's call</th></tr></thead>
+          <tbody>
+            <tr><td>Quarter ball</td><td>49&deg;</td><td>27&deg;</td><td></td></tr>
+            <tr><td>One-third ball</td><td>42&deg;</td><td>30&deg;</td><td></td></tr>
+            <tr class="hl"><td>Half ball</td><td>30&deg;</td><td>34&deg; (the peak)</td><td>&ldquo;about 35&rdquo;</td></tr>
+            <tr><td>Two-thirds ball</td><td>20&deg;</td><td>32&deg;</td><td>&ldquo;two-thirds, 30 degree&rdquo;</td></tr>
+            <tr><td>Three-quarter ball</td><td>15&deg;</td><td>28&deg;</td><td>&ldquo;three-quarter, 25&rdquo;</td></tr>
+            <tr><td>Seven-eighths ball</td><td>7&deg;</td><td>17&deg;</td><td></td></tr>
+            <tr><td>Full ball</td><td>0&deg;</td><td>0&deg; - follows straight through</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">There are two different angles here, and they are easy to mix up. The cut angle is where the <em>object</em> ball goes. The 30&deg; rule is about where the <em>cue</em> ball goes.</p>
+
+      <h3 class="sub">Two lines to picture on every shot</h3>
+      <div class="split two-lines">
+        <figure class="diagram">
+          <svg viewBox="0 0 320 320" role="img" aria-label="Half-ball cut: the object ball goes up and right; the stun cue ball leaves along the tangent line at 90 degrees; the rolling cue ball curves onto a line about 30 degrees from the aim line.">
+            <line class="aim" x1="200" y1="300" x2="200" y2="40"/>
+            <line class="ob-path" x1="216" y1="142" x2="276" y2="38"/>
+            <line class="tangent" x1="200" y1="170" x2="61" y2="90"/>
+            <path class="roll" d="M200 170 Q172 154 150 120 L95 38"/>
+            <circle class="ghost" cx="200" cy="170" r="16"/>
+            <circle class="obj" cx="216" cy="142" r="16"/>
+            <circle class="cue" cx="200" cy="290" r="16"/>
+            <text class="lbl" x="206" y="300" dx="14">Cue ball</text>
+            <text class="lbl" x="236" y="150">Object ball</text>
+            <text class="lbl obc" x="314" y="22">Object ball path</text>
+            <text class="lbl tc" x="20" y="84">Stun - 90&deg;</text>
+            <text class="lbl rc" x="8" y="22">Follow - about 30&deg;</text>
+            <text class="lbl muted" x="206" y="230">Aim line</text>
+          </svg>
+        </figure>
+        <div class="panel">
+          <div class="label">Stun - the 90&deg; rule</div>
+          <p>A cue ball that is sliding at contact leaves along the <strong>tangent line</strong>, square to the object ball's path. Joe: &ldquo;Stun, 90 degree off the tangent line.&rdquo;</p>
+          <div class="label" style="margin-top:14px">Follow - the 30&deg; rule</div>
+          <p>A rolling cue ball starts along the tangent line, then the topspin bends it forward onto the <strong>natural angle</strong>, about 30&deg; from the aim line.</p>
+          <div class="label" style="margin-top:14px">In between</div>
+          <p>Anything between a stun and full roll lands somewhere between the two lines. That is the in-between shot Joe says to avoid, because it is hard to repeat.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">How to use it at the table</h3>
+      <ol class="steps">
+        <li><b>Read the thickness.</b> Quarter, half, three-quarter? If it is between a quarter and three-quarter, the rule applies.</li>
+        <li><b>Make it roll.</b> Hit above centre so the cue ball is rolling, not sliding, when it arrives.</li>
+        <li><b>Use the V.</b> Make a peace sign. Point one finger down the aim line through the ghost ball; the other finger shows the cue ball's path, about 30&deg; off it.</li>
+        <li><b>Follow the line to the rail.</b> Check where it lands for the next ball, and what it could clip or scratch into on the way. It takes the same angle off the rail.</li>
+        <li><b>Commit.</b> You know where it goes, so play it - do not guess.</li>
+      </ol>
+
+      <h3 class="sub">Where the rule bends</h3>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>It must be rolling</h3><p>On a short shot hit at centre ball, the cue ball is still sliding at contact and behaves like a stun. Go a little higher.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Outside the band it drops fast</h3><p>Thinner than a quarter or fuller than three-quarter, the angle shrinks quickly. A near-full hit follows almost straight through, which is why the 5&deg; shot needed more pace.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Speed changes the shape, not the angle</h3><p>A firm shot runs further along the tangent line before it bends; a soft one bends almost at once. The final angle is the same, but on a crowded table the pace decides whether you clip a ball on the way.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Side shows up at the rail</h3><p>Side barely changes the path to the first rail. It changes what happens after - which is why a touch of side works as insurance.</p></div></div>
+      </div>
+      <blockquote class="quote">Follow the natural line. Follow where you predict the cue ball is going.<cite>From the 30 Oct session</cite></blockquote>
     </section>
 
     <section class="block" id="planning">
@@ -446,6 +656,34 @@
         <div class="drill"><span class="tag">Side</span><h3>Follow with side</h3><p>Near-maximum side off the first rail - learn how much side sends the cue ball where.</p></div>
         <div class="drill"><span class="tag">Break</span><h3>Square break</h3><p>Centre-ball, square hit, no extra power. Check the cue ball does not draw back.</p></div>
       </div>
+    </section>
+
+    <section class="block" id="roadmap">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 5h11l-2 3.5L15 12H4"/></svg></div>
+        <div>
+          <div class="num">The plan</div>
+          <h2>Coaching roadmap</h2>
+          <p>The 14 modules of the program, and where each session has been so far.</p>
+        </div>
+      </div>
+      <div class="legend"><span class="chip covered">Covered</span><span class="chip touched">Touched on</span><span class="chip ahead">Coming up</span></div>
+      <ol class="roadmap">
+        <li class="ahead"><span class="rn">1</span><div><h3>Goal setting and general discussion</h3></div><span class="chip ahead">Coming up</span></li>
+        <li class="ahead"><span class="rn">2</span><div><h3>Initial skill assessment</h3></div><span class="chip ahead">Coming up</span></li>
+        <li class="touched"><span class="rn">3</span><div><h3>Fundamentals</h3><p>Foot placement, vision centre, aiming, bridge, grip, eye pattern, cue delivery</p></div><span class="chip touched">Touched on</span></li>
+        <li class="covered"><span class="rn">4</span><div><h3>Basic physics of the cue ball</h3><p>Tangent line, natural angle, effect of tip position and speed - <a href="#natural">see the explainer</a></p></div><span class="chip covered">Covered</span></li>
+        <li class="touched"><span class="rn">5</span><div><h3>Adding side spin</h3><p>Deflection and swerve</p></div><span class="chip touched">Touched on</span></li>
+        <li class="ahead"><span class="rn">6</span><div><h3>Other important shots</h3><p>Long pot, combo, throw, drag, cue ball on the rail, carom, masse</p></div><span class="chip ahead">Coming up</span></li>
+        <li class="ahead"><span class="rn">7</span><div><h3>Bank shots</h3></div><span class="chip ahead">Coming up</span></li>
+        <li class="ahead"><span class="rn">8</span><div><h3>Kicking</h3><p>Diamond system</p></div><span class="chip ahead">Coming up</span></li>
+        <li class="ahead"><span class="rn">9</span><div><h3>Safety</h3><p>Principle and execution</p></div><span class="chip ahead">Coming up</span></li>
+        <li class="ahead"><span class="rn">10</span><div><h3>Jump shots</h3></div><span class="chip ahead">Coming up</span></li>
+        <li class="touched"><span class="rn">11</span><div><h3>Breaks</h3><p>9-ball break box and 10-ball</p></div><span class="chip touched">Touched on</span></li>
+        <li class="covered"><span class="rn">12</span><div><h3>Running racks</h3><p>Analysing, positional play, shot selection, solving clusters</p></div><span class="chip covered">Covered</span></li>
+        <li class="touched"><span class="rn">13</span><div><h3>Competition mindset and mental model</h3></div><span class="chip touched">Touched on</span></li>
+        <li class="ahead"><span class="rn">14</span><div><h3>Final skill assessment</h3></div><span class="chip ahead">Coming up</span></li>
+      </ol>
     </section>
 
     <section class="block" id="sessions">
