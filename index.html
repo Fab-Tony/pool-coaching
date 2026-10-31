@@ -3,176 +3,487 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pool coaching notes</title>
+<title>Pool Coaching Notes</title>
 <meta name="description" content="Rules, tips and principles from my pool coaching sessions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f5f0;
+    --bg: #f6f4ef;
     --surface: #ffffff;
-    --text: #1d2321;
-    --muted: #5d6662;
-    --line: #e2ded5;
-    --accent: #1f6b4a;
-    --accent-soft: #e4f0e9;
+    --surface-2: #faf9f6;
+    --text: #18201c;
+    --muted: #5b6660;
+    --faint: #8a948e;
+    --line: #e5e1d8;
+    --felt: #0f4d36;
+    --felt-2: #136443;
+    --felt-ink: #e9f5ee;
+    --accent: #1b7a52;
+    --accent-soft: #e3f1e9;
+    --gold: #c8962e;
+    --gold-soft: #f8efd9;
+    --shadow: 0 1px 2px rgba(20, 30, 25, .04), 0 8px 24px rgba(20, 30, 25, .06);
+    --radius: 16px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #121614;
-      --surface: #1a201d;
-      --text: #e8ece9;
-      --muted: #9aa59f;
-      --line: #2a322e;
-      --accent: #6fc49a;
-      --accent-soft: #1f2e27;
+      --bg: #0e1311;
+      --surface: #161d1a;
+      --surface-2: #121815;
+      --text: #e7ece9;
+      --muted: #a2ada7;
+      --faint: #76817b;
+      --line: #26302b;
+      --felt: #0b3a29;
+      --felt-2: #0f4a34;
+      --felt-ink: #e3f2ea;
+      --accent: #5cc694;
+      --accent-soft: #1a2c24;
+      --gold: #e0b354;
+      --gold-soft: #2c2616;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
     }
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; }
-  header h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
-  header p { color: var(--muted); margin: 0; }
-  nav { margin: 28px 0 8px; display: flex; flex-wrap: wrap; gap: 8px; }
-  nav a {
-    font-size: 0.9rem; text-decoration: none; color: var(--accent);
-    background: var(--accent-soft); padding: 4px 12px; border-radius: 999px;
+  a { color: inherit; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(1200px 400px at 80% -10%, rgba(255,255,255,.10), transparent 60%),
+      linear-gradient(160deg, var(--felt-2), var(--felt));
+    color: var(--felt-ink);
+    padding: 56px 16px 72px;
+    position: relative;
+    overflow: hidden;
   }
-  .session { margin-top: 40px; }
-  .session-meta {
-    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--muted); margin: 0 0 4px;
+  .hero::after {
+    content: "";
+    position: absolute; inset: auto -40px -60px auto;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff, #e9e6dd 55%, #bdb8aa);
+    opacity: .10;
   }
-  .session > h2 { font-size: 1.5rem; margin: 0 0 16px; }
-  section.card {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: 12px; padding: 20px 24px; margin: 16px 0;
+  .hero-inner { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(233, 245, 238, .75);
   }
-  section.card h3 { margin: 0 0 8px; font-size: 1.15rem; color: var(--accent); }
-  ul { margin: 0; padding-left: 20px; }
-  li { margin: 8px 0; }
-  li strong { font-weight: 600; }
-  .ladder {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-    margin: 4px 0 12px; font-weight: 600;
+  .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .hero h1 {
+    font-family: Fraunces, Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.08; margin: 14px 0 12px; font-weight: 700; letter-spacing: -.01em;
   }
-  .ladder span { background: var(--accent-soft); padding: 4px 12px; border-radius: 8px; }
-  .ladder i { color: var(--muted); font-style: normal; }
-  table { border-collapse: collapse; margin: 8px 0 12px; font-size: 0.95rem; }
-  th, td { text-align: left; padding: 6px 16px 6px 0; border-bottom: 1px solid var(--line); }
-  th { color: var(--muted); font-weight: 500; }
-  blockquote {
-    margin: 12px 0 0; padding: 8px 16px; border-left: 3px solid var(--accent);
-    color: var(--muted); font-style: italic;
+  .hero p.lede { max-width: 620px; font-size: 1.08rem; color: rgba(233, 245, 238, .85); margin: 0; }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .stat {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px; padding: 10px 16px; min-width: 120px;
   }
-  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; }
+  .stat b { display: block; font-size: 1.25rem; font-weight: 700; color: #fff; }
+  .stat span { font-size: .8rem; color: rgba(233, 245, 238, .7); }
+
+  /* Layout */
+  .layout {
+    max-width: 1120px; margin: -40px auto 0; padding: 0 16px 80px;
+    display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px;
+    position: relative; z-index: 2;
+  }
+  @media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+
+  /* Sidebar nav */
+  .toc {
+    position: sticky; top: 24px; align-self: start;
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px 12px;
+  }
+  .toc h2 {
+    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--faint); margin: 0 12px 10px; font-weight: 600;
+  }
+  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+  .toc li a {
+    display: flex; gap: 10px; align-items: center;
+    padding: 8px 12px; border-radius: 10px; text-decoration: none;
+    color: var(--muted); font-size: .92rem; font-weight: 500;
+    transition: background .15s, color .15s;
+  }
+  .toc li a::before {
+    counter-increment: toc; content: counter(toc, decimal-leading-zero);
+    font-size: .72rem; color: var(--faint); font-variant-numeric: tabular-nums; width: 18px;
+  }
+  .toc li a:hover, .toc li a.active { background: var(--accent-soft); color: var(--accent); }
+  .toc li a.active::before { color: var(--accent); }
+  .toc .session-tag {
+    margin: 16px 12px 0; padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: .8rem; color: var(--faint);
+  }
+  @media (max-width: 900px) {
+    .toc {
+      position: sticky; top: 0; z-index: 10; border-radius: 0 0 14px 14px;
+      margin: 0 -16px 20px; padding: 10px 16px; border-left: 0; border-right: 0; border-top: 0;
+    }
+    .toc h2, .toc .session-tag { display: none; }
+    .toc ol { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+    .toc ol::-webkit-scrollbar { display: none; }
+    .toc li a { white-space: nowrap; padding: 6px 12px; font-size: .85rem; }
+  }
+
+  /* Content */
+  .content { min-width: 0; }
+  .block {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 32px; margin-bottom: 24px;
+  }
+  @media (max-width: 600px) { .block { padding: 22px 18px; } }
+  .block-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+  .icon {
+    flex: none; width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center; background: var(--accent-soft); color: var(--accent);
+  }
+  .icon svg { width: 22px; height: 22px; }
+  .block-head .num {
+    font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  }
+  .block-head h2 {
+    font-family: Fraunces, Georgia, serif; font-size: 1.6rem; line-height: 1.2;
+    margin: 2px 0 4px; font-weight: 700;
+  }
+  .block-head p { margin: 0; color: var(--muted); }
+
+  /* Key takeaways */
+  .takeaways { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px; }
+  .takeaway {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px;
+  }
+  .takeaway .k { font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--gold); }
+  .takeaway h3 { margin: 6px 0 4px; font-size: 1rem; }
+  .takeaway p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  /* Principle list */
+  .principles { display: grid; gap: 12px; }
+  .principle {
+    display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px;
+    padding: 14px 0; border-top: 1px solid var(--line);
+  }
+  .principle:first-child { border-top: 0; padding-top: 0; }
+  .principle .tick {
+    width: 24px; height: 24px; border-radius: 50%; margin-top: 2px;
+    background: var(--accent-soft); color: var(--accent); display: grid; place-items: center;
+  }
+  .principle .tick svg { width: 14px; height: 14px; }
+  .principle h3 { margin: 0 0 2px; font-size: 1rem; }
+  .principle p { margin: 0; color: var(--muted); }
+
+  /* Quote */
+  .quote {
+    margin: 24px 0 0; padding: 18px 20px; border-radius: 12px;
+    background: var(--gold-soft); border-left: 4px solid var(--gold);
+    font-family: Fraunces, Georgia, serif; font-size: 1.12rem; line-height: 1.45;
+  }
+  .quote cite {
+    display: block; margin-top: 6px; font-family: Inter, sans-serif; font-style: normal;
+    font-size: .8rem; color: var(--muted);
+  }
+
+  /* Two-column split */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
+  .panel { border-radius: 12px; padding: 18px; border: 1px solid var(--line); background: var(--surface-2); }
+  .panel .label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  .panel.do .label { color: var(--accent); }
+  .panel.dont .label { color: var(--gold); }
+  .panel p { margin: 6px 0 0; color: var(--muted); }
+
+  /* Shot ladder */
+  .ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
+  .rung {
+    border-radius: 12px; padding: 16px; text-align: center; border: 1px solid var(--line);
+    background: var(--surface-2);
+  }
+  .rung .rank { font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--faint); }
+  .rung b { display: block; font-size: 1.15rem; margin: 4px 0 2px; }
+  .rung span { font-size: .82rem; color: var(--muted); }
+  .rung.first { background: var(--accent-soft); border-color: transparent; }
+  .rung.first .rank, .rung.first b { color: var(--accent); }
+  .bar { height: 6px; border-radius: 3px; background: var(--line); margin-top: 10px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+
+  /* Angle chart */
+  .angles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 12px; margin-bottom: 12px; }
+  .angle {
+    border: 1px solid var(--line); border-radius: 12px; padding: 14px 12px 12px; text-align: center;
+    background: var(--surface-2);
+  }
+  .angle svg { width: 100%; max-width: 120px; height: auto; display: block; margin: 0 auto 8px; }
+  .angle b { display: block; font-size: .95rem; }
+  .angle span { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .ob { fill: var(--gold); }
+  .cb { fill: none; stroke: var(--text); stroke-width: 2; stroke-dasharray: 4 3; }
+  .note { font-size: .85rem; color: var(--faint); margin: 0 0 20px; }
+
+  /* Drills */
+  .drills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 12px; }
+  .drill { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--surface-2); }
+  .drill .tag {
+    display: inline-block; font-size: .72rem; font-weight: 600; padding: 2px 10px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .drill h3 { margin: 10px 0 4px; font-size: 1rem; }
+  .drill p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+  /* Session log */
+  .sessions { list-style: none; margin: 0; padding: 0; }
+  .sessions li {
+    display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px;
+    padding: 14px 0; border-top: 1px solid var(--line);
+  }
+  .sessions li:first-child { border-top: 0; padding-top: 0; }
+  .sessions time { font-size: .85rem; font-weight: 600; color: var(--accent); }
+  .sessions h3 { margin: 0; font-size: 1rem; }
+  .sessions p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+
+  footer { text-align: center; color: var(--faint); font-size: .85rem; padding: 0 16px 48px; }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Pool coaching notes</h1>
-    <p>Rules, tips and principles from my coaching sessions - newest first.</p>
-  </header>
 
-  <article class="session" id="2026-10-30">
-    <p class="session-meta">Friday 30 October 2026 - 90 minutes</p>
-    <h2>Cue ball control and table strategy</h2>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Pool coaching notes</div>
+    <h1>Cue ball control<br>and table strategy</h1>
+    <p class="lede">The rules, tips and principles from my coaching sessions, written up so I can come back to them before I play.</p>
+    <div class="stats">
+      <div class="stat"><b>30 Oct 2026</b><span>Latest session</span></div>
+      <div class="stat"><b>90 min</b><span>On the table</span></div>
+      <div class="stat"><b>7-foot</b><span>Table size</span></div>
+    </div>
+  </div>
+</header>
 
-    <nav>
-      <a href="#mindset">Mindset</a>
-      <a href="#break">Break</a>
-      <a href="#action">Cue ball action</a>
-      <a href="#angles">Angles</a>
-      <a href="#planning">Planning</a>
-      <a href="#drills">Drills</a>
-    </nav>
+<div class="layout">
+  <nav class="toc" aria-label="Sections">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#takeaways">Key takeaways</a></li>
+      <li><a href="#mindset">Mindset</a></li>
+      <li><a href="#break">The break</a></li>
+      <li><a href="#action">Cue ball action</a></li>
+      <li><a href="#angles">Reading angles</a></li>
+      <li><a href="#planning">Table planning</a></li>
+      <li><a href="#drills">Practice drills</a></li>
+      <li><a href="#sessions">Session log</a></li>
+    </ol>
+    <div class="session-tag">Updated after each session</div>
+  </nav>
 
-    <section class="card" id="mindset">
-      <h3>Mindset and routine</h3>
-      <ul>
-        <li><strong>Practice is tuning; playing is running the program.</strong> Fix stroke, elbow and stance in practice. In a match, do what feels comfortable on the day - forcing it means playing badly, getting frustrated and not winning.</li>
-        <li><strong>Comfort shifts as you practise.</strong> What feels natural now is not what felt natural two weeks or three months ago. Let it evolve.</li>
-        <li><strong>Pre-shot routine on every shot.</strong> Never get lazy on it.</li>
-        <li><strong>It is certainty, not mechanics.</strong> When confident, the stroke happens naturally. Doubt after a bad run is what makes you misread angles you would normally see.</li>
-        <li><strong>Trust the line.</strong> Adjusting the aim once you are down is a trust problem. If it feels wrong, stand up and get down again.</li>
-        <li><strong>Check the breath.</strong> It changes everything.</li>
+  <main class="content">
+
+    <section class="block" id="takeaways">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 7-6.2-3.4-6.2 3.4 1.3-7L2 9.4l7-.9z"/></svg></div>
+        <div>
+          <div class="num">Start here</div>
+          <h2>Key takeaways</h2>
+          <p>If I only remember five things before a match.</p>
+        </div>
+      </div>
+      <div class="takeaways">
+        <div class="takeaway"><div class="k">01</div><h3>Routine, every shot</h3><p>The pre-shot routine is not optional, even on easy balls.</p></div>
+        <div class="takeaway"><div class="k">02</div><h3>Follow first</h3><p>If follow gets me there, play follow. It is the most repeatable action.</p></div>
+        <div class="takeaway"><div class="k">03</div><h3>Thickness, then line</h3><p>Read the cut before deciding pace or path.</p></div>
+        <div class="takeaway"><div class="k">04</div><h3>Accurate break</h3><p>On a 7-foot table, a square hit beats raw power.</p></div>
+        <div class="takeaway"><div class="k">05</div><h3>Breathe and trust</h3><p>Check the breath. If the line feels wrong, stand up and reset.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="mindset">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
+        <div>
+          <div class="num">01</div>
+          <h2>Mindset and routine</h2>
+          <p>Most misses come from doubt, not technique.</p>
+        </div>
+      </div>
+      <div class="split">
+        <div class="panel do"><div class="label">In practice</div><p>Tune the stroke. Work on the elbow, the stance and the bridge. Try the theoretically better way.</p></div>
+        <div class="panel dont"><div class="label">In a match</div><p>Run the program. Do what feels comfortable on the day - forcing changes means playing badly and getting frustrated.</p></div>
+      </div>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Comfort shifts as you practise</h3><p>What feels natural now is not what felt natural two weeks or three months ago. Let it evolve - it is meant to.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Pre-shot routine on every shot</h3><p>Mental and physical preparation, every time. It is the first thing to slip, so guard it.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>It is certainty, not mechanics</h3><p>When confident, the stroke happens naturally. After a bad run, doubt makes me misread angles I would normally see.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Trust the line</h3><p>Adjusting the aim once down on the shot is a trust problem. If it feels wrong, stand up and get down again.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Check the breath</h3><p>Slowing the breath before the shot changed everything.</p></div></div>
+      </div>
+      <blockquote class="quote">When you're practising, you're tuning. When you're playing, you just run the program.<cite>From the 30 Oct session</cite></blockquote>
+    </section>
+
+    <section class="block" id="break">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9" cy="12" r="2.5"/><circle cx="15" cy="12" r="2.5"/><circle cx="6" cy="17" r="2.5"/><circle cx="12" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/></svg></div>
+        <div>
+          <div class="num">02</div>
+          <h2>The break</h2>
+          <p>On a 7-foot table, accuracy beats power.</p>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Accuracy over power</h3><p>A 9-foot table needs power; a 7-foot table does not. An accurate break is usually already very good.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Hit the cue ball square</h3><p>My breaks were drifting off to the right. The later ones were much more square.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Not too low</h3><p>If the cue ball draws back off the rack, the strike was below centre.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Find your own power source</h3><p>Some players use the wrist - it works if it is yours. An open bridge on the break is fine. Line up carefully, then focus on the action, not changes.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Straight-stroke check</h3><p>After the follow-through, notice which part of the hand touches the table. Landing on the same spot each time means the stroke stayed straight.</p></div></div>
+      </div>
+    </section>
+
+    <section class="block" id="action">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="4"/><path d="M11 13l8-8"/><path d="M14 5h5v5"/></svg></div>
+        <div>
+          <div class="num">03</div>
+          <h2>Choosing the cue ball action</h2>
+          <p>Pick the most repeatable shot that gets position.</p>
+        </div>
+      </div>
+      <div class="ladder">
+        <div class="rung first"><div class="rank">1st choice</div><b>Follow</b><span>Most repeatable</span><div class="bar"><i style="width:100%"></i></div></div>
+        <div class="rung"><div class="rank">2nd</div><b>Stun</b><span>Easier than draw</span><div class="bar"><i style="width:66%"></i></div></div>
+        <div class="rung"><div class="rank">3rd</div><b>Draw</b><span>Hardest to control</span><div class="bar"><i style="width:33%"></i></div></div>
+      </div>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Avoid in-between shots</h3><p>A half stop, half follow is hard to repeat on the same line. Commit to one action.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Choose for your own strengths</h3><p>Good at draw: a smooth one-rail draw. Not: follow with a little side and play the short side. It looks odd but it is a sound shot.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Side as insurance</h3><p>A touch of side - for example draw with a bit of right - still gets position if the main action comes up short.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The soft stop</h3><p>Tip a bit lower and hit softer, so the cue ball still slides. It is pace plus feel, and only repetition teaches it.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Topspin adds speed</h3><p>A rolling cue ball keeps accelerating after contact, so follow needs less cue speed than you think.</p></div></div>
+      </div>
+      <blockquote class="quote">If I can get on the shot with follow, I follow. Every time.<cite>From the 30 Oct session</cite></blockquote>
+    </section>
+
+    <section class="block" id="angles">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M4 20L16 6"/><path d="M10 20a6 6 0 0 0-1.6-4.1"/></svg></div>
+        <div>
+          <div class="num">04</div>
+          <h2>Reading angles</h2>
+          <p>Thickness first, then the line - you cannot judge pace until you know the cut.</p>
+        </div>
+      </div>
+      <div class="angles">
+        <div class="angle">
+          <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="60" cy="30" r="22"/></svg>
+          <b>Full ball</b><span>0&deg; - straight</span>
+        </div>
+        <div class="angle">
+          <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="49" cy="30" r="22"/></svg>
+          <b>Three-quarter</b><span>about 15&deg;</span>
+        </div>
+        <div class="angle">
+          <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="38" cy="30" r="22"/></svg>
+          <b>Half ball</b><span>30&deg;</span>
+        </div>
+        <div class="angle">
+          <svg viewBox="0 0 120 60"><circle class="ob" cx="70" cy="30" r="22"/><circle class="cb" cx="37" cy="30" r="22"/></svg>
+          <b>Quarter ball</b><span>about 49&deg;</span>
+        </div>
+      </div>
+      <p class="note">Gold is the object ball; the dashed ring is where the cue ball looks to overlap it when you aim.</p>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Use the tangent line</h3><p>A stun shot sends the cue ball off at 90&deg; to the object ball's path. A rolling ball follows the natural angle forward from there.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Near-straight shots need more pace</h3><p>A 5&deg; cut is almost straight, so the cue ball barely moves. Cheat the pocket slightly or hit firmer than feels natural.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Close to the pocket, pot precisely</h3><p>Entering on the left or right side of the pocket can change the cue ball's path by around 10&deg;. Pick the side, then hit it.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Know, do not guess</h3><p>Learn what the rails and side actually do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</p></div></div>
+      </div>
+      <blockquote class="quote">When you know exactly what's going to happen, that's when you start winning frames consistently.<cite>From the 30 Oct session</cite></blockquote>
+    </section>
+
+    <section class="block" id="planning">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="10" r="1.5"/><circle cx="16" cy="14" r="1.5"/><path d="M9.5 10.8l5 2.4" stroke-dasharray="2 2"/></svg></div>
+        <div>
+          <div class="num">05</div>
+          <h2>Planning the table</h2>
+          <p>Shot by shot, analyse the situation.</p>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Explore options in order</h3><p>Follow, then draw, then stop - and the in-between shot only if nothing else works.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Play for the natural angle</h3><p>Leave a natural angle on the next ball so I can follow through and remove problem balls on the way.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>When unsure, err long</h3><p>Too much leaves a longer shot. Too little gets me stuck behind a ball, which is far worse.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Deal with problem balls early</h3><p>Clear them while the table is open. Take the trickiest ball when it is convenient, and do not play into clusters that push balls into bad spots.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The black still needs cue ball thought</h3><p>A scratch on the black loses the frame. Rolling the cue ball guarantees no scratch; a stun can scratch.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>English bridge at an angle</h3><p>Far more stable than a makeshift bridge on awkward shots.</p></div></div>
+      </div>
+    </section>
+
+    <section class="block" id="drills">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></div>
+        <div>
+          <div class="num">06</div>
+          <h2>Practice drills</h2>
+          <p>The shots that only repetition fixes.</p>
+        </div>
+      </div>
+      <div class="drills">
+        <div class="drill"><span class="tag">Pace and feel</span><h3>Soft stop</h3><p>Same pot, vary the pace. Tip a little lower, hit softer, and keep the cue ball sliding.</p></div>
+        <div class="drill"><span class="tag">Control</span><h3>One-rail draw</h3><p>Smooth draw back off one rail at controlled pace, landing in the same zone each time.</p></div>
+        <div class="drill"><span class="tag">Side</span><h3>Follow with side</h3><p>Near-maximum side off the first rail - learn how much side sends the cue ball where.</p></div>
+        <div class="drill"><span class="tag">Break</span><h3>Square break</h3><p>Centre-ball, square hit, no extra power. Check the cue ball does not draw back.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="sessions">
+      <div class="block-head">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></div>
+        <div>
+          <div class="num">07</div>
+          <h2>Session log</h2>
+          <p>What each session covered.</p>
+        </div>
+      </div>
+      <ul class="sessions">
+        <li><time datetime="2026-10-30">30 Oct 2026</time><div><h3>Cue ball control and table strategy</h3><p>90 minutes. Break accuracy, choosing follow over draw, reading thickness and angles, planning a run-out shot by shot.</p></div></li>
       </ul>
     </section>
 
-    <section class="card" id="break">
-      <h3>The break (7-foot table)</h3>
-      <ul>
-        <li><strong>Accuracy over power.</strong> 9-foot needs power; 7-foot does not. An accurate break is usually already very good.</li>
-        <li><strong>Hit the cue ball square.</strong> Mine drifted off to the right.</li>
-        <li><strong>Not too low.</strong> If the cue ball draws back off the rack, the strike was below centre.</li>
-        <li><strong>Find your own power source.</strong> Some players use the wrist - it works if it is yours. An open bridge is fine.</li>
-        <li><strong>Straight-stroke check:</strong> after the follow-through, notice which part of your hand touches the table. Landing on the same spot each time means you stayed straight.</li>
-      </ul>
-    </section>
+  </main>
+</div>
 
-    <section class="card" id="action">
-      <h3>Choosing the cue ball action</h3>
-      <div class="ladder"><span>Follow</span><i>easier than</i><span>Stun</span><i>easier than</i><span>Draw</span></div>
-      <ul>
-        <li><strong>If you can get there with follow, follow.</strong> It is the most repeatable.</li>
-        <li><strong>Avoid in-between shots</strong> (half stop, half follow). They are hard to repeat on the same line.</li>
-        <li><strong>Choose for your own strengths.</strong> Good at draw: smooth one-rail draw. Not: follow with a little side and play the short side.</li>
-        <li><strong>Side as insurance.</strong> A touch of side (for example draw with a bit of right) gets you there even when the main action comes up short.</li>
-        <li><strong>The soft stop</strong> - tip a bit lower, hit softer, so the cue ball still slides. Pace plus feel; only repetition teaches it.</li>
-        <li><strong>Topspin adds speed.</strong> A rolling cue ball keeps accelerating after contact, so it needs less cue speed than you think.</li>
-      </ul>
-    </section>
+<footer>Pool coaching notes - updated after each session</footer>
 
-    <section class="card" id="angles">
-      <h3>Reading angles</h3>
-      <ul>
-        <li><strong>Thickness first, then the line.</strong> You cannot decide pace or path until you know the cut.</li>
-      </ul>
-      <table>
-        <thead><tr><th>Thickness</th><th>Cut angle</th></tr></thead>
-        <tbody>
-          <tr><td>Three-quarter ball</td><td>about 25&deg;</td></tr>
-          <tr><td>Two-thirds ball</td><td>about 30&deg;</td></tr>
-          <tr><td>Half ball</td><td>about 35&deg;</td></tr>
-        </tbody>
-      </table>
-      <ul>
-        <li><strong>Tangent line:</strong> stun sends the cue ball off at 90&deg;; a rolling ball follows the natural angle forward.</li>
-        <li><strong>Near-straight shots need more pace than you think.</strong> A 5&deg; cut is almost straight - cheat the pocket slightly or hit firmer.</li>
-        <li><strong>Object ball close to the pocket: pot precisely.</strong> Entering the left or right side of the pocket can change the cue ball path by 10&deg;.</li>
-        <li><strong>Know, do not guess.</strong> Learn what the rails and side do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</li>
-      </ul>
-    </section>
-
-    <section class="card" id="planning">
-      <h3>Planning the table</h3>
-      <ul>
-        <li><strong>Shot by shot, explore the options:</strong> follow, then draw, then stop, and in-between last.</li>
-        <li><strong>Play for the natural angle</strong> on the next ball, so you can follow through and remove problem balls.</li>
-        <li><strong>When unsure, err long.</strong> Too much leaves a longer shot; too little gets you stuck behind a ball.</li>
-        <li><strong>Deal with problem balls early</strong> while the table is open. Take the trickiest ball when it is convenient, and do not play into clusters that push balls into bad spots.</li>
-        <li><strong>The black still needs cue ball thought.</strong> A scratch loses the frame. Rolling guarantees no scratch; stun can scratch.</li>
-        <li><strong>English bridge at an angle</strong> - far more stable than a makeshift bridge on awkward shots.</li>
-      </ul>
-      <blockquote>Shot by shot, you analyse the situation.</blockquote>
-    </section>
-
-    <section class="card" id="drills">
-      <h3>Practice drills</h3>
-      <ul>
-        <li>The soft stop / slide shot - same pot, vary the pace.</li>
-        <li>One-rail draw back at controlled pace.</li>
-        <li>Follow with near-maximum side - learn how much side takes you where off the first rail.</li>
-        <li>Breaks focused on a square, centre-ball hit rather than power.</li>
-      </ul>
-    </section>
-  </article>
-
-  <footer>Notes from coaching sessions, written up after each one.</footer>
-</main>
+<script>
+  // Highlight the section in view in the contents list
+  const links = [...document.querySelectorAll('.toc a')];
+  const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const a = byId[e.target.id];
+        if (a) {
+          a.classList.add('active');
+          const ol = a.closest('ol');
+          ol.scrollLeft = a.offsetLeft - ol.clientWidth / 2 + a.clientWidth / 2;
+        }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
+</script>
 </body>
 </html>
