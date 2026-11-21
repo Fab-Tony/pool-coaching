@@ -9,357 +9,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f6f4ef;
-    --surface: #ffffff;
-    --surface-2: #faf9f6;
-    --text: #18201c;
-    --muted: #5b6660;
-    --faint: #8a948e;
-    --line: #e5e1d8;
-    --felt: #0f4d36;
-    --felt-2: #136443;
-    --felt-ink: #e9f5ee;
-    --accent: #1b7a52;
-    --accent-soft: #e3f1e9;
-    --gold: #c8962e;
-    --gold-soft: #f8efd9;
-    --shadow: 0 1px 2px rgba(20, 30, 25, .04), 0 8px 24px rgba(20, 30, 25, .06);
-    --radius: 16px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e1311;
-      --surface: #161d1a;
-      --surface-2: #121815;
-      --text: #e7ece9;
-      --muted: #a2ada7;
-      --faint: #76817b;
-      --line: #26302b;
-      --felt: #0b3a29;
-      --felt-2: #0f4a34;
-      --felt-ink: #e3f2ea;
-      --accent: #5cc694;
-      --accent-soft: #1a2c24;
-      --gold: #e0b354;
-      --gold-soft: #2c2616;
-      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
-    }
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; }
-
-  /* Hero */
-  .hero {
-    background:
-      radial-gradient(1200px 400px at 80% -10%, rgba(255,255,255,.10), transparent 60%),
-      linear-gradient(160deg, var(--felt-2), var(--felt));
-    color: var(--felt-ink);
-    padding: 56px 16px 72px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::after {
-    content: "";
-    position: absolute; inset: auto -40px -60px auto;
-    width: 260px; height: 260px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #ffffff, #e9e6dd 55%, #bdb8aa);
-    opacity: .10;
-  }
-  .hero-inner { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
-    color: rgba(233, 245, 238, .75);
-  }
-  .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
-  .hero h1 {
-    font-family: Fraunces, Georgia, serif;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    line-height: 1.08; margin: 14px 0 12px; font-weight: 700; letter-spacing: -.01em;
-  }
-  .hero p.lede { max-width: 620px; font-size: 1.08rem; color: rgba(233, 245, 238, .85); margin: 0; }
-  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .stat {
-    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
-    border-radius: 12px; padding: 10px 16px; min-width: 120px;
-  }
-  .stat b { display: block; font-size: 1.25rem; font-weight: 700; color: #fff; }
-  .stat span { font-size: .8rem; color: rgba(233, 245, 238, .7); }
-
-  /* Layout */
-  .layout {
-    max-width: 1120px; margin: -40px auto 0; padding: 0 16px 80px;
-    display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px;
-    position: relative; z-index: 2;
-  }
-  @media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); gap: 0; } }
-
-  /* Sidebar nav */
-  .toc {
-    position: sticky; top: 24px; align-self: start;
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 20px 12px;
-  }
-  .toc h2 {
-    font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--faint); margin: 0 12px 10px; font-weight: 600;
-  }
-  .toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
-  .toc li a {
-    display: flex; gap: 10px; align-items: center;
-    padding: 8px 12px; border-radius: 10px; text-decoration: none;
-    color: var(--muted); font-size: .92rem; font-weight: 500;
-    transition: background .15s, color .15s;
-  }
-  .toc li a::before {
-    counter-increment: toc; content: counter(toc, decimal-leading-zero);
-    font-size: .72rem; color: var(--faint); font-variant-numeric: tabular-nums; width: 18px;
-  }
-  .toc li a:hover, .toc li a.active { background: var(--accent-soft); color: var(--accent); }
-  .toc li a.active::before { color: var(--accent); }
-  .toc .session-tag {
-    margin: 16px 12px 0; padding-top: 14px; border-top: 1px solid var(--line);
-    font-size: .8rem; color: var(--faint);
-  }
-  @media (max-width: 900px) {
-    .toc {
-      position: sticky; top: 0; z-index: 10; border-radius: 0 0 14px 14px;
-      margin: 0 -16px 20px; padding: 10px 16px; border-left: 0; border-right: 0; border-top: 0;
-    }
-    .toc h2, .toc .session-tag { display: none; }
-    .toc ol { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
-    .toc ol::-webkit-scrollbar { display: none; }
-    .toc li a { white-space: nowrap; padding: 6px 12px; font-size: .85rem; }
-  }
-
-  /* Content */
-  .content { min-width: 0; }
-  .block {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 32px; margin-bottom: 24px;
-  }
-  @media (max-width: 600px) { .block { padding: 22px 18px; } }
-  .block-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-  .icon {
-    flex: none; width: 44px; height: 44px; border-radius: 12px;
-    display: grid; place-items: center; background: var(--accent-soft); color: var(--accent);
-  }
-  .icon svg { width: 22px; height: 22px; }
-  .block-head .num {
-    font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
-  }
-  .block-head h2 {
-    font-family: Fraunces, Georgia, serif; font-size: 1.6rem; line-height: 1.2;
-    margin: 2px 0 4px; font-weight: 700;
-  }
-  .block-head p { margin: 0; color: var(--muted); }
-
-  /* Key takeaways */
-  .takeaways { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px; }
-  .takeaway {
-    background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px;
-  }
-  .takeaway .k { font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--gold); }
-  .takeaway h3 { margin: 6px 0 4px; font-size: 1rem; }
-  .takeaway p { margin: 0; color: var(--muted); font-size: .92rem; }
-
-  /* Principle list */
-  .principles { display: grid; gap: 12px; }
-  .principle {
-    display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px;
-    padding: 14px 0; border-top: 1px solid var(--line);
-  }
-  .principle:first-child { border-top: 0; padding-top: 0; }
-  .principle .tick {
-    width: 24px; height: 24px; border-radius: 50%; margin-top: 2px;
-    background: var(--accent-soft); color: var(--accent); display: grid; place-items: center;
-  }
-  .principle .tick svg { width: 14px; height: 14px; }
-  .principle h3 { margin: 0 0 2px; font-size: 1rem; }
-  .principle p { margin: 0; color: var(--muted); }
-
-  /* Quote */
-  .quote {
-    margin: 24px 0 0; padding: 18px 20px; border-radius: 12px;
-    background: var(--gold-soft); border-left: 4px solid var(--gold);
-    font-family: Fraunces, Georgia, serif; font-size: 1.12rem; line-height: 1.45;
-  }
-  .quote cite {
-    display: block; margin-top: 6px; font-family: Inter, sans-serif; font-style: normal;
-    font-size: .8rem; color: var(--muted);
-  }
-
-  /* Two-column split */
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-  @media (max-width: 640px) { .split { grid-template-columns: 1fr; } }
-  .panel { border-radius: 12px; padding: 18px; border: 1px solid var(--line); background: var(--surface-2); }
-  .panel .label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-  .panel.do .label { color: var(--accent); }
-  .panel.dont .label { color: var(--gold); }
-  .panel p { margin: 6px 0 0; color: var(--muted); }
-
-  /* Shot ladder */
-  .ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
-  .rung {
-    border-radius: 12px; padding: 16px; text-align: center; border: 1px solid var(--line);
-    background: var(--surface-2);
-  }
-  .rung .rank { font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--faint); }
-  .rung b { display: block; font-size: 1.15rem; margin: 4px 0 2px; }
-  .rung span { font-size: .82rem; color: var(--muted); }
-  .rung.first { background: var(--accent-soft); border-color: transparent; }
-  .rung.first .rank, .rung.first b { color: var(--accent); }
-  .bar { height: 6px; border-radius: 3px; background: var(--line); margin-top: 10px; overflow: hidden; }
-  .bar i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
-
-  /* Angle chart */
-  .angles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 12px; margin-bottom: 12px; }
-  .angle {
-    border: 1px solid var(--line); border-radius: 12px; padding: 14px 12px 12px; text-align: center;
-    background: var(--surface-2);
-  }
-  .angle svg { width: 100%; max-width: 120px; height: auto; display: block; margin: 0 auto 8px; }
-  .angle b { display: block; font-size: .95rem; }
-  .angle span { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
-  .ob { fill: var(--gold); }
-  .cb { fill: none; stroke: var(--text); stroke-width: 2; stroke-dasharray: 4 3; }
-  .note { font-size: .85rem; color: var(--faint); margin: 0 0 20px; }
-
-  /* Drills */
-  .drills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 12px; }
-  .drill { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: var(--surface-2); }
-  .drill .tag {
-    display: inline-block; font-size: .72rem; font-weight: 600; padding: 2px 10px; border-radius: 999px;
-    background: var(--accent-soft); color: var(--accent);
-  }
-  .drill h3 { margin: 10px 0 4px; font-size: 1rem; }
-  .drill p { margin: 0; color: var(--muted); font-size: .92rem; }
-
-  /* Session log */
-  .sessions { list-style: none; margin: 0; padding: 0; }
-  .sessions li {
-    display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px;
-    padding: 14px 0; border-top: 1px solid var(--line);
-  }
-  .sessions li:first-child { border-top: 0; padding-top: 0; }
-  .sessions time { font-size: .85rem; font-weight: 600; color: var(--accent); }
-  .sessions h3 { margin: 0; font-size: 1rem; }
-  .sessions p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
-
-
-  /* Explainer */
-  .prose { margin: 0 0 16px; color: var(--text); }
-  h3.sub { font-family: Fraunces, Georgia, serif; font-size: 1.2rem; margin: 28px 0 10px; }
-  .rule-card {
-    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center;
-    background: linear-gradient(160deg, var(--felt-2), var(--felt)); color: var(--felt-ink);
-    border-radius: 14px; padding: 22px 24px; margin: 8px 0 8px;
-  }
-  .rule-card .rule-num { font-family: Fraunces, Georgia, serif; font-size: 3rem; font-weight: 700; line-height: 1; color: var(--gold); }
-  .rule-card h3 { margin: 0 0 4px; font-size: 1rem; color: #fff; }
-  .rule-card p { margin: 0; color: rgba(233, 245, 238, .9); }
-  .rule-card strong { color: #fff; }
-  @media (max-width: 520px) { .rule-card { grid-template-columns: 1fr; gap: 8px; } .rule-card .rule-num { font-size: 2.4rem; } }
-
-  figure { margin: 0; }
-  .chart { border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); padding: 16px 12px 12px; margin: 8px 0 20px; }
-  .chart svg { width: 100%; height: auto; display: block; }
-  .chart figcaption, .diagram figcaption { font-size: .82rem; color: var(--faint); text-align: center; margin-top: 6px; }
-  .chart .band { fill: var(--accent-soft); }
-  .chart .grid line { stroke: var(--line); stroke-width: 1; }
-  .chart .grid .thirty { stroke: var(--gold); stroke-dasharray: 5 4; stroke-width: 1.5; }
-  .chart .axis line { stroke: var(--faint); stroke-width: 1.5; }
-  .chart text { font-family: Inter, sans-serif; fill: var(--muted); font-size: 12px; }
-  .chart .ticks text { text-anchor: end; }
-  .chart .xticks text, .chart .axis-title, .chart .band-label, .chart .pt-labels text { text-anchor: middle; }
-  .chart .strong { fill: var(--text); font-weight: 700; }
-  .chart .axis-title, .chart .y-title { font-weight: 600; fill: var(--text); font-size: 12px; }
-  .chart .y-title { text-anchor: middle; }
-  .chart .band-label { fill: var(--accent); font-weight: 600; }
-  .chart .curve { fill: none; stroke: var(--text); stroke-width: 3; stroke-linejoin: round; }
-  .chart .pts circle { fill: var(--gold); stroke: var(--surface-2); stroke-width: 2; }
-  .chart .pt-labels text { fill: var(--text); font-weight: 700; }
-
-  .table-wrap { overflow-x: auto; margin: 0 0 8px; }
-  table.data { width: 100%; border-collapse: collapse; font-size: .92rem; min-width: 480px; }
-  table.data th { text-align: left; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); }
-  table.data td { padding: 9px 10px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
-  table.data td:last-child { color: var(--muted); font-style: italic; }
-  table.data tr.hl td { background: var(--accent-soft); font-weight: 600; }
-
-  .two-lines { align-items: stretch; }
-  .diagram { border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); padding: 12px; display: grid; place-items: center; }
-  .diagram svg { width: 100%; max-width: 320px; height: auto; }
-  .diagram .aim { stroke: var(--faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
-  .diagram .ob-path { stroke: var(--gold); stroke-width: 2.5; stroke-dasharray: 6 4; }
-  .diagram .tangent { stroke: #3d7bd9; stroke-width: 2.5; }
-  .diagram .roll { fill: none; stroke: var(--accent); stroke-width: 3; }
-  .diagram .ghost { fill: none; stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 3 3; }
-  .diagram .obj { fill: var(--gold); }
-  .diagram .cue { fill: #fff; stroke: var(--text); stroke-width: 1.5; }
-  .diagram .lbl { font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; fill: var(--text); }
-  .diagram .lbl.muted { fill: var(--faint); font-weight: 500; }
-  .diagram .obc { fill: var(--gold); text-anchor: end; }
-  .diagram .tc { fill: #3d7bd9; }
-  .diagram .rc { fill: var(--accent); }
-
-  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: st; display: grid; gap: 10px; }
-  ol.steps li {
-    counter-increment: st; position: relative; padding: 12px 14px 12px 52px;
-    background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; margin: 0; color: var(--muted);
-  }
-  ol.steps li::before {
-    content: counter(st); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; border-radius: 50%;
-    background: var(--accent); color: #fff; font-weight: 700; font-size: .85rem; display: grid; place-items: center;
-  }
-  ol.steps b { color: var(--text); }
-
-  /* Roadmap */
-  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  .chip { display: inline-block; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
-  .chip.covered { background: var(--accent); color: #fff; }
-  .chip.touched { background: var(--gold-soft); color: var(--gold); }
-  .chip.ahead { background: var(--surface-2); color: var(--faint); border: 1px solid var(--line); }
-  ol.roadmap { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-  ol.roadmap li {
-    display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: center;
-    padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); margin: 0;
-  }
-  ol.roadmap li.covered { border-color: var(--accent); }
-  ol.roadmap .rn {
-    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: .9rem;
-    background: var(--surface); border: 1px solid var(--line); color: var(--muted);
-  }
-  ol.roadmap li.covered .rn { background: var(--accent); color: #fff; border-color: var(--accent); }
-  ol.roadmap li.touched .rn { background: var(--gold-soft); color: var(--gold); border-color: transparent; }
-  ol.roadmap h3 { margin: 0; font-size: .98rem; }
-  ol.roadmap p { margin: 2px 0 0; color: var(--muted); font-size: .88rem; }
-  ol.roadmap a { color: var(--accent); }
-  @media (max-width: 520px) { ol.roadmap li { grid-template-columns: 30px minmax(0, 1fr); } ol.roadmap li > .chip { grid-column: 2; justify-self: start; } }
-
-  footer { text-align: center; color: var(--faint); font-size: .85rem; padding: 0 16px 48px; }
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
+    <nav class="switch" aria-label="Site"><a href="./" aria-current="page">Coaching</a><a href="tonys-play.html">Tony's Play</a></nav>
     <div class="eyebrow"><span class="dot"></span>Pool coaching notes</div>
     <h1>Cue ball control<br>and table strategy</h1>
     <p class="lede">The rules, tips and principles from my coaching sessions, written up so I can come back to them before I play.</p>
     <div class="stats">
-      <div class="stat"><b>30 Oct 2026</b><span>Latest session</span></div>
-      <div class="stat"><b>90 min</b><span>On the table</span></div>
+      <div class="stat"><b>17 Nov 2026</b><span>Latest session</span></div>
+      <div class="stat"><b>2</b><span>Sessions</span></div>
       <div class="stat"><b>7-foot</b><span>Table size</span></div>
     </div>
   </div>
@@ -422,6 +84,8 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>It is certainty, not mechanics</h3><p>When confident, the stroke happens naturally. After a bad run, doubt makes me misread angles I would normally see.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Trust the line</h3><p>Adjusting the aim once down on the shot is a trust problem. If it feels wrong, stand up and get down again.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Check the breath</h3><p>Slowing the breath before the shot changed everything.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Stepping in mindfully works <span class="new-chip">17 Nov</span></h3><p>Taking my time, looking around the table and breathing before I step in. At the tournament I missed less overall.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The order for a positional shot <span class="new-chip">17 Nov</span></h3><p>Set up your point, find the line, think about tip position, then take it down: tip position, line, strength, and send the cue ball towards it.</p></div></div>
       </div>
       <blockquote class="quote">When you're practising, you're tuning. When you're playing, you just run the program.<cite>From the 30 Oct session</cite></blockquote>
     </section>
@@ -441,6 +105,7 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Not too low</h3><p>If the cue ball draws back off the rack, the strike was below centre.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Find your own power source</h3><p>Some players use the wrist - it works if it is yours. An open bridge on the break is fine. Line up carefully, then focus on the action, not changes.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Straight-stroke check</h3><p>After the follow-through, notice which part of the hand touches the table. Landing on the same spot each time means the stroke stayed straight.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Progress: definitely better <span class="new-chip">17 Nov</span></h3><p>A good break, with a pop, a ball down and the white in the centre, about half the time. Joe: &ldquo;at least fifty percent.&rdquo; My full break routine is on <a href="tonys-play.html#break">Tony&rsquo;s Play</a>.</p></div></div>
       </div>
     </section>
 
@@ -464,6 +129,9 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Side as insurance</h3><p>A touch of side - for example draw with a bit of right - still gets position if the main action comes up short.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The soft stop</h3><p>Tip a bit lower and hit softer, so the cue ball still slides. It is pace plus feel, and only repetition teaches it.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Topspin adds speed</h3><p>A rolling cue ball keeps accelerating after contact, so follow needs less cue speed than you think.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>When stun will not get there <span class="new-chip">17 Nov</span></h3><p>Stun has been my default for years. On some shots it cannot get position. Pick follow, with the tip one below maximum rather than full, instead of forcing the stun.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Check the follow path for a scratch <span class="new-chip">17 Nov</span></h3><p>On a follow shot, trace the cue ball to the rail. On 17 Nov it ran very close to the corner pocket.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Draw comes from the tip, not power <span class="new-chip">17 Nov</span></h3><p>Wanted the same draw with less power? Hit lower and on the right spot. Longer distances need both.</p></div></div>
       </div>
       <blockquote class="quote">If I can get on the shot with follow, I follow. Every time.<cite>From the 30 Oct session</cite></blockquote>
     </section>
@@ -500,6 +168,7 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Use the tangent line</h3><p>A stun shot sends the cue ball off at 90&deg; to the object ball's path. A rolling ball follows the natural angle forward from there.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Near-straight shots need more pace</h3><p>A 5&deg; cut is almost straight, so the cue ball barely moves. Cheat the pocket slightly or hit firmer than feels natural.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Close to the pocket, pot precisely</h3><p>Entering on the left or right side of the pocket can change the cue ball's path by around 10&deg;. Pick the side, then hit it.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Thin cuts are a different shot <span class="new-chip">17 Nov</span></h3><p>A quarter-to-a-third-ball cut is very different from three-quarter, even when it looks similar. Being closer does not make it the same shot. Identify the angle properly, especially on your last ball and at distance.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Know, do not guess</h3><p>Learn what the rails and side actually do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</p></div></div>
       </div>
       <blockquote class="quote">When you know exactly what's going to happen, that's when you start winning frames consistently.<cite>From the 30 Oct session</cite></blockquote>
@@ -638,6 +307,12 @@
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Deal with problem balls early</h3><p>Clear them while the table is open. Take the trickiest ball when it is convenient, and do not play into clusters that push balls into bad spots.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The black still needs cue ball thought</h3><p>A scratch on the black loses the frame. Rolling the cue ball guarantees no scratch; a stun can scratch.</p></div></div>
         <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>English bridge at an angle</h3><p>Far more stable than a makeshift bridge on awkward shots.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Problem ball: solve it on the way, or solve it first <span class="new-chip">17 Nov</span></h3><p>Look at the problem ball. Can you get onto it easily by solving something else? If not, deal with it first.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Free a ball with your safety <span class="new-chip">17 Nov</span></h3><p>When you cannot get to the problem ball, play the shot that frees it and leaves them safe.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Does the other ball still have a pocket? <span class="new-chip">17 Nov</span></h3><p>Before playing a route that moves another ball, check where that ball goes.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Plan which side of the table you finish on <span class="new-chip">17 Nov</span></h3><p>You need a ball that brings you back to the side of the table you need next.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Pace on a hard pot <span class="new-chip">17 Nov</span></h3><p>Still think about where the cue ball goes, roughly which diamond. On the combo I needed double, even triple, the cue ball speed. When you must miss a ball on the way, you cannot cheat the pocket.</p></div></div>
+        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Choose a route nobody can call a foul on <span class="new-chip">17 Nov</span></h3><p>If a hit could be disputed, play it from an angle where it is clearly legal. Raise rule questions, like dress code, before the match.</p></div></div>
       </div>
     </section>
 
@@ -655,6 +330,10 @@
         <div class="drill"><span class="tag">Control</span><h3>One-rail draw</h3><p>Smooth draw back off one rail at controlled pace, landing in the same zone each time.</p></div>
         <div class="drill"><span class="tag">Side</span><h3>Follow with side</h3><p>Near-maximum side off the first rail - learn how much side sends the cue ball where.</p></div>
         <div class="drill"><span class="tag">Break</span><h3>Square break</h3><p>Centre-ball, square hit, no extra power. Check the cue ball does not draw back.</p></div>
+        <div class="drill"><span class="tag">Control</span><span class="new-chip">17 Nov</span><h3>Stun vs follow</h3><p>Same shot, stun then follow. Note where the cue ball finishes each time, and when stun cannot get there.</p></div>
+        <div class="drill"><span class="tag">Draw</span><span class="new-chip">17 Nov</span><h3>Draw with the tip</h3><p>Get more draw by hitting lower, not harder. Increase the distance as it gets reliable.</p></div>
+        <div class="drill"><span class="tag">Angles</span><span class="new-chip">17 Nov</span><h3>Thin cuts at distance</h3><p>Quarter-to-a-third-ball cuts from longer range. Call the thickness out loud before you get down.</p></div>
+        <div class="drill"><span class="tag">Pace</span><span class="new-chip">17 Nov</span><h3>Combos with pace</h3><p>Combination shots at double the pace that feels natural.</p></div>
       </div>
     </section>
 
@@ -674,10 +353,10 @@
         <li class="touched"><span class="rn">3</span><div><h3>Fundamentals</h3><p>Foot placement, vision centre, aiming, bridge, grip, eye pattern, cue delivery</p></div><span class="chip touched">Touched on</span></li>
         <li class="covered"><span class="rn">4</span><div><h3>Basic physics of the cue ball</h3><p>Tangent line, natural angle, effect of tip position and speed - <a href="#natural">see the explainer</a></p></div><span class="chip covered">Covered</span></li>
         <li class="touched"><span class="rn">5</span><div><h3>Adding side spin</h3><p>Deflection and swerve</p></div><span class="chip touched">Touched on</span></li>
-        <li class="ahead"><span class="rn">6</span><div><h3>Other important shots</h3><p>Long pot, combo, throw, drag, cue ball on the rail, carom, masse</p></div><span class="chip ahead">Coming up</span></li>
+        <li class="touched"><span class="rn">6</span><div><h3>Other important shots</h3><p>Long pot, combo, throw, drag, cue ball on the rail, carom, masse</p></div><span class="chip touched">Touched on</span></li>
         <li class="ahead"><span class="rn">7</span><div><h3>Bank shots</h3></div><span class="chip ahead">Coming up</span></li>
         <li class="ahead"><span class="rn">8</span><div><h3>Kicking</h3><p>Diamond system</p></div><span class="chip ahead">Coming up</span></li>
-        <li class="ahead"><span class="rn">9</span><div><h3>Safety</h3><p>Principle and execution</p></div><span class="chip ahead">Coming up</span></li>
+        <li class="touched"><span class="rn">9</span><div><h3>Safety</h3><p>Principle and execution. My own safety thinking is on <a href="tonys-play.html#safety">Tony&rsquo;s Play</a></p></div><span class="chip touched">Touched on</span></li>
         <li class="ahead"><span class="rn">10</span><div><h3>Jump shots</h3></div><span class="chip ahead">Coming up</span></li>
         <li class="touched"><span class="rn">11</span><div><h3>Breaks</h3><p>9-ball break box and 10-ball</p></div><span class="chip touched">Touched on</span></li>
         <li class="covered"><span class="rn">12</span><div><h3>Running racks</h3><p>Analysing, positional play, shot selection, solving clusters</p></div><span class="chip covered">Covered</span></li>
@@ -696,6 +375,7 @@
         </div>
       </div>
       <ul class="sessions">
+        <li><time datetime="2026-11-17">17 Nov 2026</time><div><h3>Tournament debrief and problem balls</h3><p>About 80 minutes. Break progress, stepping in mindfully, problem balls and freeing them with safeties, stun vs follow, scratch checks, draw from tip position, thin cuts, combo pace.</p></div></li>
         <li><time datetime="2026-10-30">30 Oct 2026</time><div><h3>Cue ball control and table strategy</h3><p>90 minutes. Break accuracy, choosing follow over draw, reading thickness and angles, planning a run-out shot by shot.</p></div></li>
       </ul>
     </section>
