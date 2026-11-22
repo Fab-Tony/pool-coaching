@@ -8,28 +8,16 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-page="coaching">
 
-<header class="hero">
-  <div class="hero-inner">
-    <nav class="switch" aria-label="Site"><a href="./" aria-current="page">Coaching</a><a href="tonys-play.html">Tony's Play</a></nav>
-    <div class="eyebrow"><span class="dot"></span>Pool coaching notes</div>
-    <h1>Cue ball control<br>and table strategy</h1>
-    <p class="lede">The rules, tips and principles from my coaching sessions, written up so I can come back to them before I play.</p>
-    <div class="stats">
-      <div class="stat"><b>17 Nov 2026</b><span>Latest session</span></div>
-      <div class="stat"><b>2</b><span>Sessions</span></div>
-      <div class="stat"><b>7-foot</b><span>Table size</span></div>
-    </div>
-  </div>
-</header>
+<header class="topbar"></header>
 
 <div class="layout">
   <nav class="toc" aria-label="Sections">
-    <h2>On this page</h2>
+    <div class="label">Sections</div>
     <ol>
       <li><a href="#takeaways">Key takeaways</a></li>
       <li><a href="#mindset">Mindset</a></li>
@@ -42,20 +30,15 @@
       <li><a href="#roadmap">Coaching roadmap</a></li>
       <li><a href="#sessions">Session log</a></li>
     </ol>
-    <div class="session-tag">Updated after each session</div>
+    <div class="aside">Updated after each session</div>
   </nav>
 
   <main class="content">
+    <div class="pagehead"><h1>Coaching</h1><span class="meta">Joe&rsquo;s sessions &middot; latest 17 Nov 2026</span><span class="tools"><button class="tool" type="button" data-expand="all">Expand all</button><button class="tool" type="button" data-expand="none">Collapse all</button></span></div>
 
-    <section class="block" id="takeaways">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .9-5.1 4.8 1.3 7-6.2-3.4-6.2 3.4 1.3-7L2 9.4l7-.9z"/></svg></div>
-        <div>
-          <div class="num">Start here</div>
-          <h2>Key takeaways</h2>
-          <p>If I only remember five things before a match.</p>
-        </div>
-      </div>
+    <details class="sec" id="takeaways" open>
+      <summary><h2>Key takeaways</h2><span class="sum">If I only remember five things before a match.</span></summary>
+      <div class="sec-body">
       <div class="takeaways">
         <div class="takeaway"><div class="k">01</div><h3>Routine, every shot</h3><p>The pre-shot routine is not optional, even on easy balls.</p></div>
         <div class="takeaway"><div class="k">02</div><h3>Follow first</h3><p>If follow gets me there, play follow. It is the most repeatable action.</p></div>
@@ -63,88 +46,68 @@
         <div class="takeaway"><div class="k">04</div><h3>Accurate break</h3><p>On a 7-foot table, a square hit beats raw power.</p></div>
         <div class="takeaway"><div class="k">05</div><h3>Breathe and trust</h3><p>Check the breath. If the line feels wrong, stand up and reset.</p></div>
       </div>
-    </section>
-
-    <section class="block" id="mindset">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.5" fill="currentColor"/></svg></div>
-        <div>
-          <div class="num">01</div>
-          <h2>Mindset and routine</h2>
-          <p>Most misses come from doubt, not technique.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="mindset">
+      <summary><h2>Mindset and routine</h2><span class="sum">Most misses come from doubt, not technique.</span></summary>
+      <div class="sec-body">
       <div class="split">
         <div class="panel do"><div class="label">In practice</div><p>Tune the stroke. Work on the elbow, the stance and the bridge. Try the theoretically better way.</p></div>
         <div class="panel dont"><div class="label">In a match</div><p>Run the program. Do what feels comfortable on the day - forcing changes means playing badly and getting frustrated.</p></div>
       </div>
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Comfort shifts as you practise</h3><p>What feels natural now is not what felt natural two weeks or three months ago. Let it evolve - it is meant to.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Pre-shot routine on every shot</h3><p>Mental and physical preparation, every time. It is the first thing to slip, so guard it.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>It is certainty, not mechanics</h3><p>When confident, the stroke happens naturally. After a bad run, doubt makes me misread angles I would normally see.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Trust the line</h3><p>Adjusting the aim once down on the shot is a trust problem. If it feels wrong, stand up and get down again.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Check the breath</h3><p>Slowing the breath before the shot changed everything.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Stepping in mindfully works <span class="new-chip">17 Nov</span></h3><p>Taking my time, looking around the table and breathing before I step in. At the tournament I missed less overall.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The order for a positional shot <span class="new-chip">17 Nov</span></h3><p>Set up your point, find the line, think about tip position, then take it down: tip position, line, strength, and send the cue ball towards it.</p></div></div>
+        <div class="principle"><div><h3>Comfort shifts as you practise</h3><p>What feels natural now is not what felt natural two weeks or three months ago. Let it evolve - it is meant to.</p></div></div>
+        <div class="principle"><div><h3>Pre-shot routine on every shot</h3><p>Mental and physical preparation, every time. It is the first thing to slip, so guard it.</p></div></div>
+        <div class="principle"><div><h3>It is certainty, not mechanics</h3><p>When confident, the stroke happens naturally. After a bad run, doubt makes me misread angles I would normally see.</p></div></div>
+        <div class="principle"><div><h3>Trust the line</h3><p>Adjusting the aim once down on the shot is a trust problem. If it feels wrong, stand up and get down again.</p></div></div>
+        <div class="principle"><div><h3>Check the breath</h3><p>Slowing the breath before the shot changed everything.</p></div></div>
+        <div class="principle"><div><h3>Stepping in mindfully works <span class="new-chip">17 Nov</span></h3><p>Taking my time, looking around the table and breathing before I step in. At the tournament I missed less overall.</p></div></div>
+        <div class="principle"><div><h3>The order for a positional shot <span class="new-chip">17 Nov</span></h3><p>Set up your point, find the line, think about tip position, then take it down: tip position, line, strength, and send the cue ball towards it.</p></div></div>
       </div>
       <blockquote class="quote">When you're practising, you're tuning. When you're playing, you just run the program.<cite>From the 30 Oct session</cite></blockquote>
-    </section>
-
-    <section class="block" id="break">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="2.5"/><circle cx="9" cy="12" r="2.5"/><circle cx="15" cy="12" r="2.5"/><circle cx="6" cy="17" r="2.5"/><circle cx="12" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/></svg></div>
-        <div>
-          <div class="num">02</div>
-          <h2>The break</h2>
-          <p>On a 7-foot table, accuracy beats power.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="break">
+      <summary><h2>The break</h2><span class="sum">On a 7-foot table, accuracy beats power.</span></summary>
+      <div class="sec-body">
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Accuracy over power</h3><p>A 9-foot table needs power; a 7-foot table does not. An accurate break is usually already very good.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Hit the cue ball square</h3><p>My breaks were drifting off to the right. The later ones were much more square.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Not too low</h3><p>If the cue ball draws back off the rack, the strike was below centre.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Find your own power source</h3><p>Some players use the wrist - it works if it is yours. An open bridge on the break is fine. Line up carefully, then focus on the action, not changes.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Straight-stroke check</h3><p>After the follow-through, notice which part of the hand touches the table. Landing on the same spot each time means the stroke stayed straight.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Progress: definitely better <span class="new-chip">17 Nov</span></h3><p>A good break, with a pop, a ball down and the white in the centre, about half the time. Joe: &ldquo;at least fifty percent.&rdquo; My full break routine is on <a href="tonys-play.html#break">Tony&rsquo;s Play</a>.</p></div></div>
+        <div class="principle"><div><h3>Accuracy over power</h3><p>A 9-foot table needs power; a 7-foot table does not. An accurate break is usually already very good.</p></div></div>
+        <div class="principle"><div><h3>Hit the cue ball square</h3><p>My breaks were drifting off to the right. The later ones were much more square.</p></div></div>
+        <div class="principle"><div><h3>Not too low</h3><p>If the cue ball draws back off the rack, the strike was below centre.</p></div></div>
+        <div class="principle"><div><h3>Find your own power source</h3><p>Some players use the wrist - it works if it is yours. An open bridge on the break is fine. Line up carefully, then focus on the action, not changes.</p></div></div>
+        <div class="principle"><div><h3>Straight-stroke check</h3><p>After the follow-through, notice which part of the hand touches the table. Landing on the same spot each time means the stroke stayed straight.</p></div></div>
+        <div class="principle"><div><h3>Progress: definitely better <span class="new-chip">17 Nov</span></h3><p>A good break, with a pop, a ball down and the white in the centre, about half the time. Joe: &ldquo;at least fifty percent.&rdquo; My full break routine is on <a href="tonys-play.html#break">Tony&rsquo;s Play</a>.</p></div></div>
       </div>
-    </section>
+      </div>
+    </details>
 
-    <section class="block" id="action">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="16" r="4"/><path d="M11 13l8-8"/><path d="M14 5h5v5"/></svg></div>
-        <div>
-          <div class="num">03</div>
-          <h2>Choosing the cue ball action</h2>
-          <p>Pick the most repeatable shot that gets position.</p>
-        </div>
-      </div>
+    <details class="sec" id="action">
+      <summary><h2>Choosing the cue ball action</h2><span class="sum">Pick the most repeatable shot that gets position.</span></summary>
+      <div class="sec-body">
       <div class="ladder">
         <div class="rung first"><div class="rank">1st choice</div><b>Follow</b><span>Most repeatable</span><div class="bar"><i style="width:100%"></i></div></div>
         <div class="rung"><div class="rank">2nd</div><b>Stun</b><span>Easier than draw</span><div class="bar"><i style="width:66%"></i></div></div>
         <div class="rung"><div class="rank">3rd</div><b>Draw</b><span>Hardest to control</span><div class="bar"><i style="width:33%"></i></div></div>
       </div>
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Avoid in-between shots</h3><p>A half stop, half follow is hard to repeat on the same line. Commit to one action.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Choose for your own strengths</h3><p>Good at draw: a smooth one-rail draw. Not: follow with a little side and play the short side. It looks odd but it is a sound shot.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Side as insurance</h3><p>A touch of side - for example draw with a bit of right - still gets position if the main action comes up short.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The soft stop</h3><p>Tip a bit lower and hit softer, so the cue ball still slides. It is pace plus feel, and only repetition teaches it.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Topspin adds speed</h3><p>A rolling cue ball keeps accelerating after contact, so follow needs less cue speed than you think.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>When stun will not get there <span class="new-chip">17 Nov</span></h3><p>Stun has been my default for years. On some shots it cannot get position. Pick follow, with the tip one below maximum rather than full, instead of forcing the stun.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Check the follow path for a scratch <span class="new-chip">17 Nov</span></h3><p>On a follow shot, trace the cue ball to the rail. On 17 Nov it ran very close to the corner pocket.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Draw comes from the tip, not power <span class="new-chip">17 Nov</span></h3><p>Wanted the same draw with less power? Hit lower and on the right spot. Longer distances need both.</p></div></div>
+        <div class="principle"><div><h3>Avoid in-between shots</h3><p>A half stop, half follow is hard to repeat on the same line. Commit to one action.</p></div></div>
+        <div class="principle"><div><h3>Choose for your own strengths</h3><p>Good at draw: a smooth one-rail draw. Not: follow with a little side and play the short side. It looks odd but it is a sound shot.</p></div></div>
+        <div class="principle"><div><h3>Side as insurance</h3><p>A touch of side - for example draw with a bit of right - still gets position if the main action comes up short.</p></div></div>
+        <div class="principle"><div><h3>The soft stop</h3><p>Tip a bit lower and hit softer, so the cue ball still slides. It is pace plus feel, and only repetition teaches it.</p></div></div>
+        <div class="principle"><div><h3>Topspin adds speed</h3><p>A rolling cue ball keeps accelerating after contact, so follow needs less cue speed than you think.</p></div></div>
+        <div class="principle"><div><h3>When stun will not get there <span class="new-chip">17 Nov</span></h3><p>Stun has been my default for years. On some shots it cannot get position. Pick follow, with the tip one below maximum rather than full, instead of forcing the stun.</p></div></div>
+        <div class="principle"><div><h3>Check the follow path for a scratch <span class="new-chip">17 Nov</span></h3><p>On a follow shot, trace the cue ball to the rail. On 17 Nov it ran very close to the corner pocket.</p></div></div>
+        <div class="principle"><div><h3>Draw comes from the tip, not power <span class="new-chip">17 Nov</span></h3><p>Wanted the same draw with less power? Hit lower and on the right spot. Longer distances need both.</p></div></div>
       </div>
       <blockquote class="quote">If I can get on the shot with follow, I follow. Every time.<cite>From the 30 Oct session</cite></blockquote>
-    </section>
-
-    <section class="block" id="angles">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M4 20L16 6"/><path d="M10 20a6 6 0 0 0-1.6-4.1"/></svg></div>
-        <div>
-          <div class="num">04</div>
-          <h2>Reading angles</h2>
-          <p>Thickness first, then the line - you cannot judge pace until you know the cut.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="angles">
+      <summary><h2>Reading angles</h2><span class="sum">Thickness first, then the line - you cannot judge pace until you know the cut.</span></summary>
+      <div class="sec-body">
       <div class="angles">
         <div class="angle">
           <svg viewBox="0 0 120 60"><circle class="ob" cx="60" cy="30" r="22"/><circle class="cb" cx="60" cy="30" r="22"/></svg>
@@ -165,24 +128,19 @@
       </div>
       <p class="note">Gold is the object ball; the dashed ring is where the cue ball overlaps it when you aim. &ldquo;Cut&rdquo; is where the object ball goes; &ldquo;follow&rdquo; is where a rolling cue ball goes - see <a href="#natural">the 30&deg; rule</a>.</p>
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Use the tangent line</h3><p>A stun shot sends the cue ball off at 90&deg; to the object ball's path. A rolling ball follows the natural angle forward from there.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Near-straight shots need more pace</h3><p>A 5&deg; cut is almost straight, so the cue ball barely moves. Cheat the pocket slightly or hit firmer than feels natural.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Close to the pocket, pot precisely</h3><p>Entering on the left or right side of the pocket can change the cue ball's path by around 10&deg;. Pick the side, then hit it.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Thin cuts are a different shot <span class="new-chip">17 Nov</span></h3><p>A quarter-to-a-third-ball cut is very different from three-quarter, even when it looks similar. Being closer does not make it the same shot. Identify the angle properly, especially on your last ball and at distance.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Know, do not guess</h3><p>Learn what the rails and side actually do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</p></div></div>
+        <div class="principle"><div><h3>Use the tangent line</h3><p>A stun shot sends the cue ball off at 90&deg; to the object ball's path. A rolling ball follows the natural angle forward from there.</p></div></div>
+        <div class="principle"><div><h3>Near-straight shots need more pace</h3><p>A 5&deg; cut is almost straight, so the cue ball barely moves. Cheat the pocket slightly or hit firmer than feels natural.</p></div></div>
+        <div class="principle"><div><h3>Close to the pocket, pot precisely</h3><p>Entering on the left or right side of the pocket can change the cue ball's path by around 10&deg;. Pick the side, then hit it.</p></div></div>
+        <div class="principle"><div><h3>Thin cuts are a different shot <span class="new-chip">17 Nov</span></h3><p>A quarter-to-a-third-ball cut is very different from three-quarter, even when it looks similar. Being closer does not make it the same shot. Identify the angle properly, especially on your last ball and at distance.</p></div></div>
+        <div class="principle"><div><h3>Know, do not guess</h3><p>Learn what the rails and side actually do. Players who guess are unreliable; players who know what the cue ball will do clear frames consistently.</p></div></div>
       </div>
       <blockquote class="quote">When you know exactly what's going to happen, that's when you start winning frames consistently.<cite>From the 30 Oct session</cite></blockquote>
-    </section>
-
-    <section class="block" id="natural">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="17" r="3"/><path d="M12 14V3"/><path d="M11 14.5L4 6"/></svg></div>
-        <div>
-          <div class="num">Explainer</div>
-          <h2>The natural angle - the 30&deg; rule</h2>
-          <p>Why follow is so predictable, and how to know where the cue ball goes before you hit it.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="natural">
+      <summary><h2>The natural angle - the 30&deg; rule</h2><span class="sum">Why follow is so predictable, and how to know where the cue ball goes before you hit it.</span></summary>
+      <div class="sec-body">
 
       <p class="prose">Joe calls it the <strong>natural angle</strong> or the <strong>natural line</strong> - &ldquo;follow where you predict the cue ball is going.&rdquo; Its textbook name is the <strong>30&deg; rule</strong>. Its partner for stun shots is the <strong>90&deg; rule</strong>, or the tangent line.</p>
 
@@ -283,48 +241,38 @@
 
       <h3 class="sub">Where the rule bends</h3>
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>It must be rolling</h3><p>On a short shot hit at centre ball, the cue ball is still sliding at contact and behaves like a stun. Go a little higher.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Outside the band it drops fast</h3><p>Thinner than a quarter or fuller than three-quarter, the angle shrinks quickly. A near-full hit follows almost straight through, which is why the 5&deg; shot needed more pace.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Speed changes the shape, not the angle</h3><p>A firm shot runs further along the tangent line before it bends; a soft one bends almost at once. The final angle is the same, but on a crowded table the pace decides whether you clip a ball on the way.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6"/><path d="M12 17h.01"/></svg></div><div><h3>Side shows up at the rail</h3><p>Side barely changes the path to the first rail. It changes what happens after - which is why a touch of side works as insurance.</p></div></div>
+        <div class="principle"><div><h3>It must be rolling</h3><p>On a short shot hit at centre ball, the cue ball is still sliding at contact and behaves like a stun. Go a little higher.</p></div></div>
+        <div class="principle"><div><h3>Outside the band it drops fast</h3><p>Thinner than a quarter or fuller than three-quarter, the angle shrinks quickly. A near-full hit follows almost straight through, which is why the 5&deg; shot needed more pace.</p></div></div>
+        <div class="principle"><div><h3>Speed changes the shape, not the angle</h3><p>A firm shot runs further along the tangent line before it bends; a soft one bends almost at once. The final angle is the same, but on a crowded table the pace decides whether you clip a ball on the way.</p></div></div>
+        <div class="principle"><div><h3>Side shows up at the rail</h3><p>Side barely changes the path to the first rail. It changes what happens after - which is why a touch of side works as insurance.</p></div></div>
       </div>
       <blockquote class="quote">Follow the natural line. Follow where you predict the cue ball is going.<cite>From the 30 Oct session</cite></blockquote>
-    </section>
-
-    <section class="block" id="planning">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="10" r="1.5"/><circle cx="16" cy="14" r="1.5"/><path d="M9.5 10.8l5 2.4" stroke-dasharray="2 2"/></svg></div>
-        <div>
-          <div class="num">05</div>
-          <h2>Planning the table</h2>
-          <p>Shot by shot, analyse the situation.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="planning">
+      <summary><h2>Planning the table</h2><span class="sum">Shot by shot, analyse the situation.</span></summary>
+      <div class="sec-body">
       <div class="principles">
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Explore options in order</h3><p>Follow, then draw, then stop - and the in-between shot only if nothing else works.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Play for the natural angle</h3><p>Leave a natural angle on the next ball so I can follow through and remove problem balls on the way.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>When unsure, err long</h3><p>Too much leaves a longer shot. Too little gets me stuck behind a ball, which is far worse.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Deal with problem balls early</h3><p>Clear them while the table is open. Take the trickiest ball when it is convenient, and do not play into clusters that push balls into bad spots.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>The black still needs cue ball thought</h3><p>A scratch on the black loses the frame. Rolling the cue ball guarantees no scratch; a stun can scratch.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>English bridge at an angle</h3><p>Far more stable than a makeshift bridge on awkward shots.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Problem ball: solve it on the way, or solve it first <span class="new-chip">17 Nov</span></h3><p>Look at the problem ball. Can you get onto it easily by solving something else? If not, deal with it first.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Free a ball with your safety <span class="new-chip">17 Nov</span></h3><p>When you cannot get to the problem ball, play the shot that frees it and leaves them safe.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Does the other ball still have a pocket? <span class="new-chip">17 Nov</span></h3><p>Before playing a route that moves another ball, check where that ball goes.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Plan which side of the table you finish on <span class="new-chip">17 Nov</span></h3><p>You need a ball that brings you back to the side of the table you need next.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Pace on a hard pot <span class="new-chip">17 Nov</span></h3><p>Still think about where the cue ball goes, roughly which diamond. On the combo I needed double, even triple, the cue ball speed. When you must miss a ball on the way, you cannot cheat the pocket.</p></div></div>
-        <div class="principle"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Choose a route nobody can call a foul on <span class="new-chip">17 Nov</span></h3><p>If a hit could be disputed, play it from an angle where it is clearly legal. Raise rule questions, like dress code, before the match.</p></div></div>
+        <div class="principle"><div><h3>Explore options in order</h3><p>Follow, then draw, then stop - and the in-between shot only if nothing else works.</p></div></div>
+        <div class="principle"><div><h3>Play for the natural angle</h3><p>Leave a natural angle on the next ball so I can follow through and remove problem balls on the way.</p></div></div>
+        <div class="principle"><div><h3>When unsure, err long</h3><p>Too much leaves a longer shot. Too little gets me stuck behind a ball, which is far worse.</p></div></div>
+        <div class="principle"><div><h3>Deal with problem balls early</h3><p>Clear them while the table is open. Take the trickiest ball when it is convenient, and do not play into clusters that push balls into bad spots.</p></div></div>
+        <div class="principle"><div><h3>The black still needs cue ball thought</h3><p>A scratch on the black loses the frame. Rolling the cue ball guarantees no scratch; a stun can scratch.</p></div></div>
+        <div class="principle"><div><h3>English bridge at an angle</h3><p>Far more stable than a makeshift bridge on awkward shots.</p></div></div>
+        <div class="principle"><div><h3>Problem ball: solve it on the way, or solve it first <span class="new-chip">17 Nov</span></h3><p>Look at the problem ball. Can you get onto it easily by solving something else? If not, deal with it first.</p></div></div>
+        <div class="principle"><div><h3>Free a ball with your safety <span class="new-chip">17 Nov</span></h3><p>When you cannot get to the problem ball, play the shot that frees it and leaves them safe.</p></div></div>
+        <div class="principle"><div><h3>Does the other ball still have a pocket? <span class="new-chip">17 Nov</span></h3><p>Before playing a route that moves another ball, check where that ball goes.</p></div></div>
+        <div class="principle"><div><h3>Plan which side of the table you finish on <span class="new-chip">17 Nov</span></h3><p>You need a ball that brings you back to the side of the table you need next.</p></div></div>
+        <div class="principle"><div><h3>Pace on a hard pot <span class="new-chip">17 Nov</span></h3><p>Still think about where the cue ball goes, roughly which diamond. On the combo I needed double, even triple, the cue ball speed. When you must miss a ball on the way, you cannot cheat the pocket.</p></div></div>
+        <div class="principle"><div><h3>Choose a route nobody can call a foul on <span class="new-chip">17 Nov</span></h3><p>If a hit could be disputed, play it from an angle where it is clearly legal. Raise rule questions, like dress code, before the match.</p></div></div>
       </div>
-    </section>
+      </div>
+    </details>
 
-    <section class="block" id="drills">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></div>
-        <div>
-          <div class="num">06</div>
-          <h2>Practice drills</h2>
-          <p>The shots that only repetition fixes.</p>
-        </div>
-      </div>
+    <details class="sec" id="drills">
+      <summary><h2>Practice drills</h2><span class="sum">The shots that only repetition fixes.</span></summary>
+      <div class="sec-body">
       <div class="drills">
         <div class="drill"><span class="tag">Pace and feel</span><h3>Soft stop</h3><p>Same pot, vary the pace. Tip a little lower, hit softer, and keep the cue ball sliding.</p></div>
         <div class="drill"><span class="tag">Control</span><h3>One-rail draw</h3><p>Smooth draw back off one rail at controlled pace, landing in the same zone each time.</p></div>
@@ -335,17 +283,12 @@
         <div class="drill"><span class="tag">Angles</span><span class="new-chip">17 Nov</span><h3>Thin cuts at distance</h3><p>Quarter-to-a-third-ball cuts from longer range. Call the thickness out loud before you get down.</p></div>
         <div class="drill"><span class="tag">Pace</span><span class="new-chip">17 Nov</span><h3>Combos with pace</h3><p>Combination shots at double the pace that feels natural.</p></div>
       </div>
-    </section>
-
-    <section class="block" id="roadmap">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 5h11l-2 3.5L15 12H4"/></svg></div>
-        <div>
-          <div class="num">The plan</div>
-          <h2>Coaching roadmap</h2>
-          <p>The 14 modules of the program, and where each session has been so far.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="roadmap">
+      <summary><h2>Coaching roadmap</h2><span class="sum">The 14 modules of the program, and where each session has been so far.</span></summary>
+      <div class="sec-body">
       <div class="legend"><span class="chip covered">Covered</span><span class="chip touched">Touched on</span><span class="chip ahead">Coming up</span></div>
       <ol class="roadmap">
         <li class="ahead"><span class="rn">1</span><div><h3>Goal setting and general discussion</h3></div><span class="chip ahead">Coming up</span></li>
@@ -363,46 +306,24 @@
         <li class="touched"><span class="rn">13</span><div><h3>Competition mindset and mental model</h3></div><span class="chip touched">Touched on</span></li>
         <li class="ahead"><span class="rn">14</span><div><h3>Final skill assessment</h3></div><span class="chip ahead">Coming up</span></li>
       </ol>
-    </section>
-
-    <section class="block" id="sessions">
-      <div class="block-head">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg></div>
-        <div>
-          <div class="num">07</div>
-          <h2>Session log</h2>
-          <p>What each session covered.</p>
-        </div>
       </div>
+    </details>
+
+    <details class="sec" id="sessions">
+      <summary><h2>Session log</h2><span class="sum">What each session covered.</span></summary>
+      <div class="sec-body">
       <ul class="sessions">
         <li><time datetime="2026-11-17">17 Nov 2026</time><div><h3>Tournament debrief and problem balls</h3><p>About 80 minutes. Break progress, stepping in mindfully, problem balls and freeing them with safeties, stun vs follow, scratch checks, draw from tip position, thin cuts, combo pace.</p></div></li>
         <li><time datetime="2026-10-30">30 Oct 2026</time><div><h3>Cue ball control and table strategy</h3><p>90 minutes. Break accuracy, choosing follow over draw, reading thickness and angles, planning a run-out shot by shot.</p></div></li>
       </ul>
-    </section>
+      </div>
+    </details>
 
   </main>
 </div>
 
 <footer>Pool coaching notes - updated after each session</footer>
 
-<script>
-  // Highlight the section in view in the contents list
-  const links = [...document.querySelectorAll('.toc a')];
-  const byId = Object.fromEntries(links.map(a => [a.getAttribute('href').slice(1), a]));
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(a => a.classList.remove('active'));
-        const a = byId[e.target.id];
-        if (a) {
-          a.classList.add('active');
-          const ol = a.closest('ol');
-          ol.scrollLeft = a.offsetLeft - ol.clientWidth / 2 + a.clientWidth / 2;
-        }
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  document.querySelectorAll('main section[id]').forEach(s => io.observe(s));
-</script>
+<script src="app.js"></script>
 </body>
 </html>

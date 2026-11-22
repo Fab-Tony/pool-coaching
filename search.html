@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Search Pool Notes</title>
+<meta name="description" content="Search every rule, check and drill across Coaching and Tony's Play.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-page="search">
+<header class="topbar"></header>
+
+<main class="search-layout">
+  <div class="pagehead"><h1>Search</h1><span class="meta">Every rule, check and drill on both pages</span></div>
+  <div class="search-box"><input id="q" type="search" placeholder="e.g. draw, scratch, safety, break" aria-label="Search" autocomplete="off" autofocus></div>
+  <div class="quick" aria-label="Common searches">
+    <button type="button">break</button><button type="button">safety</button><button type="button">follow</button>
+    <button type="button">stun</button><button type="button">draw</button><button type="button">scratch</button>
+    <button type="button">problem ball</button><button type="button">angle</button><button type="button">pace</button>
+    <button type="button">routine</button><button type="button">black</button>
+  </div>
+  <div class="count" id="count" aria-live="polite"></div>
+  <ul class="results" id="results"></ul>
+</main>
+
+<script src="app.js"></script>
+<script>
+(function () {
+  const SOURCES = [
+    { url: 'index.html', link: './', name: 'Coaching' },
+    { url: 'tonys-play.html', link: 'tonys-play.html', name: "Tony's Play" },
+  ];
+  const ITEMS = '.principle, ol.steps li, ul.checks li, .drill, .takeaway, .panel, .rung, .stage, .sessions li, ol.roadmap li, .quote, table.data tbody tr, .rule-card, p.prose';
+  const box = document.getElementById('q'), list = document.getElementById('results'), count = document.getElementById('count');
+  let index = [];
+
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const clean = s => s.replace(/\s+/g, ' ').trim();
+  // Join the text of separate elements with spaces, so "3rd" + "Draw" doesn't become "3rdDraw"
+  const words = node => {
+    const out = [], w = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+    while (w.nextNode()) out.push(w.currentNode.nodeValue);
+    return clean(out.join(' ')).replace(/\s+([.,:;!?)])/g, '$1');
+  };
+
+  async function build() {
+    count.textContent = 'Loading notes...';
+    for (const src of SOURCES) {
+      try {
+        const html = await (await fetch(src.url, { cache: 'no-cache' })).text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        doc.querySelectorAll('details.sec').forEach(sec => {
+          const secTitle = clean(sec.querySelector('summary h2').textContent);
+          sec.querySelectorAll(ITEMS).forEach(el => {
+            if (el.parentElement.closest(ITEMS)) return;
+            const c = el.cloneNode(true);
+            c.querySelectorAll('.new-chip, .tag-chip, .chip, .tag, .k, .rank, .rn, cite, .bar').forEach(n => n.remove());
+            const t = c.querySelector('h3, b, .label');
+            const title = t ? words(t) : '';
+            if (t) t.remove();
+            const body = words(c);
+            if ((title + body).length < 3) return;
+            index.push({ page: src.name, href: `${src.link}#${sec.id}`, section: secTitle, title: title || body.slice(0, 80), body: title ? body : (body.length > 80 ? body : '') });
+          });
+        });
+      } catch (e) { /* page unavailable; skip */ }
+    }
+    run();
+  }
+
+  function mark(s, terms) {
+    let out = esc(s);
+    terms.forEach(t => { out = out.replace(new RegExp(`(${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>'); });
+    return out;
+  }
+
+  function run() {
+    const q = box.value.trim().toLowerCase();
+    history.replaceState(null, '', q ? `?q=${encodeURIComponent(q)}` : location.pathname);
+    if (!q) { list.innerHTML = ''; count.textContent = index.length ? `${index.length} notes indexed. Type to search.` : ''; return; }
+    const terms = q.split(/\s+/).filter(Boolean);
+    const hits = index.map(it => {
+      const T = (it.title + ' ' + it.section).toLowerCase(), B = it.body.toLowerCase();
+      if (!terms.every(t => T.includes(t) || B.includes(t))) return null;
+      const score = terms.reduce((s, t) => s + (it.title.toLowerCase().includes(t) ? 3 : 0) + (it.section.toLowerCase().includes(t) ? 1 : 0), 0);
+      return { it, score };
+    }).filter(Boolean).sort((a, b) => b.score - a.score);
+    count.textContent = `${hits.length} result${hits.length === 1 ? '' : 's'}`;
+    list.innerHTML = hits.slice(0, 80).map(({ it }) =>
+      `<li><a href="${it.href}"><div class="where">${esc(it.page)} &rsaquo; ${esc(it.section)}</div>` +
+      `<div class="title">${mark(it.title, terms)}</div>` +
+      (it.body ? `<div class="snip">${mark(it.body, terms)}</div>` : '') + `</a></li>`).join('');
+  }
+
+  box.value = new URLSearchParams(location.search).get('q') || '';
+  box.addEventListener('input', run);
+  document.querySelectorAll('.quick button').forEach(b => b.addEventListener('click', () => { box.value = b.textContent; run(); box.focus(); }));
+  build();
+})();
+</script>
+</body>
+</html>
